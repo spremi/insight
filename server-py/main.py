@@ -8,7 +8,10 @@
 
 import falcon
 
+from generic import config
 from generic import log
+
+from routes.fake import Fake
 from routes.version import Version
 
 app = application = falcon.API()
@@ -34,3 +37,21 @@ class Ready():
 #
 app.add_route('/', Ready())
 app.add_route('/version', Version())
+
+if config.MODE == 'FAKE':
+    fakeObj = Fake()
+
+    app.add_route('/login', fakeObj.login)
+    app.add_route('/logout', fakeObj.logout)
+
+    app.add_route('/projects', fakeObj.project)
+    app.add_route('/projects/{projId}', fakeObj.project)
+    app.add_route('/projects/{projId}/{resource}', fakeObj.project)
+
+    app.add_route('/issues', fakeObj.issue)
+    app.add_route('/issues/{issueId}', fakeObj.issue)
+    app.add_route('/issues/{issueId}/{resource}', fakeObj.issue)
+
+    app.add_route('/users', fakeObj.user)
+    app.add_route('/users/{userId}', fakeObj.user)
+    app.add_route('/users/{userId}/{resource}', fakeObj.user)
