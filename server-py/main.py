@@ -8,6 +8,8 @@
 
 import falcon
 
+from routes.version import Version
+
 app = application = falcon.API()
 
 
@@ -26,3 +28,4 @@ class Ready():
 # Define route(s)
 #
 app.add_route('/', Ready())
+app.add_route('/version', Version())
