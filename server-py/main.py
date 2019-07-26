@@ -12,6 +12,7 @@ from generic import config
 from generic import log
 
 from routes.fake import Fake
+from routes.jira import Jira
 from routes.version import Version
 
 app = application = falcon.API()
@@ -55,3 +56,24 @@ if config.MODE == 'FAKE':
     app.add_route('/users', fakeObj.user)
     app.add_route('/users/{userId}', fakeObj.user)
     app.add_route('/users/{userId}/{resource}', fakeObj.user)
+
+elif config.MODE == 'JIRA':
+    jiraObj = Jira()
+
+    app.add_route('/login', jiraObj.login)
+    app.add_route('/logout', jiraObj.logout)
+
+    app.add_route('/projects', jiraObj.project)
+    app.add_route('/projects/{projId}', jiraObj.project)
+    app.add_route('/projects/{projId}/{resource}', jiraObj.project)
+
+    app.add_route('/issues', jiraObj.issue)
+    app.add_route('/issues/{issueId}', jiraObj.issue)
+    app.add_route('/issues/{issueId}/{resource}', jiraObj.issue)
+
+    app.add_route('/users', jiraObj.user)
+    app.add_route('/users/{userId}', jiraObj.user)
+    app.add_route('/users/{userId}/{resource}', jiraObj.user)
+
+else:
+    pass
