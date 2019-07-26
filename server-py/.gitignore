@@ -1,0 +1,15 @@
+#
+# Local 'virtual env'
+#
+_python/
+
+#
+# Python cache
+#
+__pycache__/
+
+#
+# IDE
+#
+.vscode
+!.vscode/settings.json
