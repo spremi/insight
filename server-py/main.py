@@ -8,9 +8,12 @@
 
 import falcon
 
+from generic import log
 from routes.version import Version
 
 app = application = falcon.API()
+
+logger = log.setup('DEBUG')
 
 
 class Ready():
@@ -19,6 +22,8 @@ class Ready():
     """
 
     def on_get(self, req, res):
+        logger.info('Ready.')
+
         res.body = 'Ready.'
         res.status = falcon.HTTP_200
         res.content_type = 'text/plain; charset=utf-8'
