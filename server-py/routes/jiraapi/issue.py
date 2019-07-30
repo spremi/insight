@@ -9,16 +9,20 @@
 import logging
 import falcon
 
+from generic.Endpoint import Endpoint
+
 log = logging.getLogger('app')
 
 
-class Issue():
+class Issue(Endpoint):
     """
     Handle requests related to issue(s).
     """
 
     def on_get(self, req: falcon.Request, res: falcon.Response, issueId: str = None, resource: str = None):
         log.debug('[JIRA] Issues')
+
+        self.showParams(issueId, resource)
 
         res.body = 'ISSUES'
         res.status = falcon.HTTP_200

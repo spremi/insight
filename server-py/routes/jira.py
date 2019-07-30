@@ -23,11 +23,11 @@ class Jira():
     """
 
     def __init__(self):
-        self.login = AuthLogin()
-        self.logout = AuthLogout()
-        self.user = User()
-        self.project = Project()
-        self.issue = Issue()
+        self.login = AuthLogin('/login')
+        self.logout = AuthLogout('/logout')
+        self.user = User('/users')
+        self.project = Project('/projects')
+        self.issue = Issue('/issues')
 
     def on_get(self, req, res, task):
         log.debug('Fake')

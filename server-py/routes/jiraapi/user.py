@@ -9,16 +9,20 @@
 import logging
 import falcon
 
+from generic.Endpoint import Endpoint
+
 log = logging.getLogger('app')
 
 
-class User():
+class User(Endpoint):
     """
     Handle requests related to user(s).
     """
 
     def on_get(self, req: falcon.Request, res: falcon.Response, userId: str = None, resource: str = None):
         log.debug('[JIRA] Users')
+
+        self.showParams(userId, resource)
 
         res.body = 'USERS'
         res.status = falcon.HTTP_200

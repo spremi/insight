@@ -9,16 +9,20 @@
 import logging
 import falcon
 
+from generic.Endpoint import Endpoint
+
 log = logging.getLogger('app')
 
 
-class Project():
+class Project(Endpoint):
     """
     Handle requests related to project(s)
     """
 
     def on_get(self, req: falcon.Request, res: falcon.Response, projId: str = None, resource: str = None):
         log.debug('[JIRA] Projects')
+
+        self.showParams(projId, resource)
 
         res.body = 'PROJECTS'
         res.status = falcon.HTTP_200

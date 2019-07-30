@@ -9,10 +9,12 @@
 import logging
 import falcon
 
+from generic.Endpoint import Endpoint
+
 log = logging.getLogger('app')
 
 
-class AuthLogin():
+class AuthLogin(Endpoint):
     """
     Handle login requests.
     """
@@ -25,7 +27,7 @@ class AuthLogin():
         res.content_type = 'text/plain; charset=utf-8'
 
 
-class AuthLogout():
+class AuthLogout(Endpoint):
     """
     Handle logout requests.
     """
