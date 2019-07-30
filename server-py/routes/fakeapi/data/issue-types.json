@@ -1,0 +1,20 @@
+[
+    {
+        "id": "type_01",
+        "name": "Type 1",
+        "desc": "Type Type 1",
+        "iconId": "type_icon_1"
+    },
+    {
+        "id": "type_02",
+        "name": "Type 2",
+        "desc": "Type Type 2",
+        "iconId": "type_icon_1"
+    },
+    {
+        "id": "type_03",
+        "name": "Type 3",
+        "desc": "Type Type 3",
+        "iconId": "type_icon_3"
+    }
+]

@@ -1,0 +1,10 @@
+{
+    "id": "is_001",
+    "key": "IS_001",
+    "summary": "Issue 01",
+    "desc": "This is issue 01.",
+    "typeId": "type_01",
+    "priorityId": "prio_00",
+    "statusId": "stat_02",
+    "resolutionId": "reso_04"
+}

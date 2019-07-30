@@ -1,0 +1,52 @@
+[
+    {
+        "id": "is_001",
+        "key": "IS_001",
+        "summary": "Issue 01",
+        "desc": "This is issue 01.",
+        "typeId": "type_01",
+        "priorityId": "prio_00",
+        "statusId": "stat_02",
+        "resolutionId": "reso_04"
+    },
+    {
+        "id": "is_002",
+        "key": "IS_002",
+        "summary": "Issue 02",
+        "desc": "This is issue 02.",
+        "typeId": "type_01",
+        "priorityId": "prio_01",
+        "statusId": "stat_01",
+        "resolutionId": "reso_02"
+    },
+    {
+        "id": "is_003",
+        "key": "IS_003",
+        "summary": "Issue 03",
+        "desc": "This is issue 03.",
+        "typeId": "type_03",
+        "priorityId": "prio_02",
+        "statusId": "stat_02",
+        "resolutionId": "reso_01"
+    },
+    {
+        "id": "is_004",
+        "key": "IS_004",
+        "summary": "Issue 04",
+        "desc": "This is issue 04.",
+        "typeId": "type_02",
+        "priorityId": "prio_01",
+        "statusId": "stat_01",
+        "resolutionId": "reso_02"
+    },
+    {
+        "id": "is_005",
+        "key": "IS_005",
+        "summary": "Issue 05",
+        "desc": "This is issue 05.",
+        "typeId": "type_03",
+        "priorityId": "prio_03",
+        "statusId": "stat_03",
+        "resolutionId": "reso_00"
+    }
+]

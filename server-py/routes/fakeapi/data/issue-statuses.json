@@ -1,0 +1,32 @@
+[
+    {
+        "id": "stat01",
+        "name": "Stat 1",
+        "desc": "Status 1",
+        "iconId": "stat_icon_1"
+    },
+    {
+        "id": "stat01",
+        "name": "Stat 1",
+        "desc": "Status 1",
+        "iconId": "stat_icon_1"
+    },
+    {
+        "id": "stat02",
+        "name": "Stat 2",
+        "desc": "Status 2",
+        "iconId": "stat_icon_2"
+    },
+    {
+        "id": "stat03",
+        "name": "Stat 3",
+        "desc": "Status 3",
+        "iconId": "stat_icon_3"
+    },
+    {
+        "id": "stat04",
+        "name": "Stat 4",
+        "desc": "Status 4",
+        "iconId": "stat_icon_4"
+    }
+]
