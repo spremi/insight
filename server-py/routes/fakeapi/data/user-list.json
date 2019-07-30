@@ -1,0 +1,32 @@
+[
+    {
+        "id": "user_001",
+        "name": "User One",
+        "avatarId": "usr_av_01",
+        "active": true
+    },
+    {
+        "id": "user_002",
+        "name": "User Two",
+        "avatarId": "usr_av_02",
+        "active": true
+    },
+    {
+        "id": "user_003",
+        "name": "User Three",
+        "avatarId": "usr_av_03",
+        "active": true
+    },
+    {
+        "id": "user_004",
+        "name": "User Four",
+        "avatarId": "usr_av_04",
+        "active": false
+    },
+    {
+        "id": "user_005",
+        "name": "User Five",
+        "avatarId": "usr_av_05",
+        "active": true
+    }
+]
