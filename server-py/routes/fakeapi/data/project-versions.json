@@ -1,0 +1,26 @@
+[
+    {
+        "id": "ver01",
+        "name": "Version 01",
+        "desc": "This is version 1.",
+        "released": true
+    },
+    {
+        "id": "ver02",
+        "name": "Version 02",
+        "desc": "This is version 2.",
+        "released": true
+    },
+    {
+        "id": "ver03",
+        "name": "Version 03",
+        "desc": "This is version 3.",
+        "released": false
+    },
+    {
+        "id": "ver04",
+        "name": "Version 04",
+        "desc": "This is version 4.",
+        "released": false
+    }
+]
