@@ -37,11 +37,25 @@ class Ready():
         res.content_type = 'text/plain; charset=utf-8'
 
 
+class FavIcon():
+    """
+    Serve favicon.ico
+    """
+
+    def on_get(self, req, res):
+        with open('favicon.ico', 'rb') as f:
+            res.body = f.read()
+
+            res.status = falcon.HTTP_200
+            res.content_type = 'image/x-icon'
+
+
 #
 # Define route(s)
 #
 app.add_route('/', Ready())
 app.add_route('/version', Version())
+app.add_route('/favicon.ico', FavIcon())
 
 if config.MODE == 'FAKE':
     fakeObj = Fake()
