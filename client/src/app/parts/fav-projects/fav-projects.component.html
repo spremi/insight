@@ -1,1 +1,5 @@
-<p>fav-projects works!</p>
+<ng-container *ngIf="projects">
+  <ng-container *ngFor="let project of projects">
+    <sp-project-card [data]="project"></sp-project-card>
+  </ng-container>
+</ng-container>
