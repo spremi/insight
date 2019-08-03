@@ -6,7 +6,8 @@
 // Available under terms of the BSD-3-Clause license.
 //
 
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Project } from 'src/app/models/project';
 
 @Component({
   selector: 'sp-fav-projects',
@@ -15,9 +16,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavProjectsComponent implements OnInit {
 
+  @Input()
+  projects: Project[];
+
   constructor() { }
 
   ngOnInit() {
   }
-
 }
