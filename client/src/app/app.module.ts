@@ -10,6 +10,7 @@ import { AboutComponent } from './routes/about/about.component';
 import { HomeComponent } from './routes/home/home.component';
 import { IssueComponent } from './routes/issue/issue.component';
 import { ProjectComponent } from './routes/project/project.component';
+import { StrayComponent } from './routes/stray/stray.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ProjectComponent } from './routes/project/project.component';
     AboutComponent,
     ProjectComponent,
     IssueComponent,
+    StrayComponent,
   ],
   imports: [
     BrowserModule,
