@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { IssueListComponent } from './parts/issue-list/issue-list.component';
 import { ProjectInfoComponent } from './parts/project-info/project-info.component';
 import { ProjectListComponent } from './parts/project-list/project-list.component';
 import { AboutComponent } from './routes/about/about.component';
@@ -24,6 +25,7 @@ import { StrayComponent } from './routes/stray/stray.component';
     StrayComponent,
     ProjectListComponent,
     ProjectInfoComponent,
+    IssueListComponent,
   ],
   imports: [
     BrowserModule,
