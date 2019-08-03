@@ -12,6 +12,7 @@ import { IssueComponent } from './routes/issue/issue.component';
 import { LoginComponent } from './routes/login/login.component';
 import { LogoutComponent } from './routes/logout/logout.component';
 import { ProjectComponent } from './routes/project/project.component';
+import { StrayComponent } from './routes/stray/stray.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProjectComponent } from './routes/project/project.component';
     IssueComponent,
     LoginComponent,
     LogoutComponent,
+    StrayComponent,
   ],
   imports: [
     BrowserModule,
