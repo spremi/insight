@@ -8,6 +8,9 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 import { IssueListComponent } from './issue-list.component';
 
 describe('IssueListComponent', () => {
@@ -16,6 +19,11 @@ describe('IssueListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        NoopAnimationsModule,
+        MaterialModule,
+        RouterModule,
+      ],
       declarations: [IssueListComponent],
     })
       .compileComponents();
