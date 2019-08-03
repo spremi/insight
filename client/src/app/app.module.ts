@@ -11,6 +11,7 @@ import { HeaderComponent } from './parts/header/header.component';
 import { IssueInfoComponent } from './parts/issue-info/issue-info.component';
 import { IssueListComponent } from './parts/issue-list/issue-list.component';
 import { LoginComponent } from './parts/login/login.component';
+import { LogoutComponent } from './parts/logout/logout.component';
 import { ProjectInfoComponent } from './parts/project-info/project-info.component';
 import { ProjectListComponent } from './parts/project-list/project-list.component';
 import { AboutComponent } from './routes/about/about.component';
@@ -34,6 +35,7 @@ import { StrayComponent } from './routes/stray/stray.component';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
