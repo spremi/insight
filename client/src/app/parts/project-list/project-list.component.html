@@ -1,1 +1,16 @@
-<p>project-list works!</p>
+<mat-toolbar>
+  <span>PROJECT LIST</span>
+</mat-toolbar>
+
+<mat-form-field class="filter">
+  <input [(ngModel)]="filterText" matInput placeholder="Filter">
+</mat-form-field>
+
+<mat-selection-list>
+  <mat-list-option *ngFor="let project of projects | projSelect: filterText">
+    <h3 matLine>{{project.name}}</h3>
+    <p matLine>{{project.desc}}</p>
+  </mat-list-option>
+</mat-selection-list>
+
+<button class="select" mat-raised-button>SET FAVORITE</button>
