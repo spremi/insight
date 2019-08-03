@@ -7,7 +7,7 @@
 //
 
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -84,4 +84,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTooltipModule,
   ],
 })
-export class MaterialModule { }
+export class MaterialModule {
+  constructor(@Optional() @SkipSelf() parentModule: MaterialModule) {
+    if (parentModule) {
+      throw new Error(
+        'MaterialModule is already loaded. It must be imported in AppModule only.');
+    }
+  }
+}
