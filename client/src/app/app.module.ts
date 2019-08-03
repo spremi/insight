@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ProjectInfoComponent } from './parts/project-info/project-info.component';
 import { ProjectListComponent } from './parts/project-list/project-list.component';
 import { AboutComponent } from './routes/about/about.component';
 import { HomeComponent } from './routes/home/home.component';
@@ -22,6 +23,7 @@ import { StrayComponent } from './routes/stray/stray.component';
     IssueComponent,
     StrayComponent,
     ProjectListComponent,
+    ProjectInfoComponent,
   ],
   imports: [
     BrowserModule,
