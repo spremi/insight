@@ -1,6 +1,19 @@
+import { Component } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+
+@Component({
+  selector: 'sp-header',
+  template: '<span>Mock Header</span>',
+})
+class MockHeaderComponent { }
+
+@Component({
+  selector: 'sp-footer',
+  template: '<span>Mock Footer</span>',
+})
+class MockFooterComponent { }
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -10,6 +23,8 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
+        MockHeaderComponent,
+        MockFooterComponent,
       ],
     }).compileComponents();
   }));
