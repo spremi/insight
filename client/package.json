@@ -43,5 +43,21 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
+  },
+  "keywords": [
+    "insight",
+    "project",
+    "management",
+    "JIRA"
+  ],
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "Sanjeev Premi",
+    "email": "spremi@ymail.com",
+    "url": "https://github.com/spremi"
+  },
+  "homepage": "https://github.com/spremi/insight",
+  "bugs": {
+    "url": "https://github.com/spremi/insight/issues"
   }
 }
