@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './routes/about/about.component';
 import { HomeComponent } from './routes/home/home.component';
+import { IssueComponent } from './routes/issue/issue.component';
 import { ProjectComponent } from './routes/project/project.component';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ProjectComponent } from './routes/project/project.component';
     HomeComponent,
     AboutComponent,
     ProjectComponent,
+    IssueComponent,
   ],
   imports: [
     BrowserModule,
