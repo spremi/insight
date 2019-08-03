@@ -8,6 +8,10 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { FormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/app/modules/material/material.module';
+import { ProjSelectPipe } from 'src/app/pipes/proj-select.pipe';
 import { ProjectListComponent } from './project-list.component';
 
 describe('ProjectListComponent', () => {
@@ -16,7 +20,15 @@ describe('ProjectListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ProjectListComponent],
+      imports: [
+        NoopAnimationsModule,
+        MaterialModule,
+        FormsModule,
+      ],
+      declarations: [
+        ProjectListComponent,
+        ProjSelectPipe,
+      ],
     })
       .compileComponents();
   }));

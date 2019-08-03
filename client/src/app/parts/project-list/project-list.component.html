@@ -1,1 +1,22 @@
-<p>project-list works!</p>
+<mat-toolbar>
+  <span>PROJECT LIST</span>
+</mat-toolbar>
+
+<div class="controls">
+  <mat-form-field class="filter">
+    <input [(ngModel)]="filterText" matInput placeholder="Filter">
+  </mat-form-field>
+
+  <button mat-raised-button
+    [disabled]="selected === 0"
+    (click)="setFavorites()">SET FAVORITES</button>
+</div>
+
+<div class="list">
+  <mat-checkbox
+    *ngFor="let project of projects | projSelect: filterText"
+    [matTooltip]="project.name"
+    matTooltipPosition="below"
+    (change)="toggleProject(project.id)"
+  >{{project.key}}</mat-checkbox>
+</div>
