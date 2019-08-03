@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './routes/about/about.component';
 import { HomeComponent } from './routes/home/home.component';
+import { ProjectComponent } from './routes/project/project.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
+    ProjectComponent,
   ],
   imports: [
     BrowserModule,
