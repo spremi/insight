@@ -1,1 +1,18 @@
-<p>footer works!</p>
+<mat-toolbar>
+  <span class="h-spacer"></span>
+  <span>&copy; 2019, Sanjeev Premi</span>
+
+  <span class="h-spacer"></span>
+
+  <button mat-icon-button
+    *ngIf="isAbout"
+    (click)="goBack()">
+    <mat-icon svgIcon="clear"></mat-icon>
+  </button>
+
+  <button mat-icon-button
+    *ngIf="!isAbout"
+    routerLink="/about">
+    <mat-icon svgIcon="license"></mat-icon>
+  </button>
+</mat-toolbar>
