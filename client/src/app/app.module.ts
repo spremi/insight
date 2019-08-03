@@ -18,6 +18,7 @@ import { ProjectCardComponent } from './parts/project-card/project-card.componen
 import { ProjectInfoComponent } from './parts/project-info/project-info.component';
 import { ProjectListComponent } from './parts/project-list/project-list.component';
 import { IssuePriorityPipe } from './pipes/issue-priority.pipe';
+import { IssueResolutionPipe } from './pipes/issue-resolution.pipe';
 import { IssueStatusPipe } from './pipes/issue-status.pipe';
 import { IssueTypePipe } from './pipes/issue-type.pipe';
 import { ProjSelectPipe } from './pipes/proj-select.pipe';
@@ -49,6 +50,7 @@ import { StrayComponent } from './routes/stray/stray.component';
     IssueTypePipe,
     IssuePriorityPipe,
     IssueStatusPipe,
+    IssueResolutionPipe,
   ],
   imports: [
     BrowserModule,
