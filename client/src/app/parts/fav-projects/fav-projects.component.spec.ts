@@ -8,7 +8,20 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { Component, Input } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { Project } from 'src/app/models/project';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 import { FavProjectsComponent } from './fav-projects.component';
+
+@Component({
+  selector: 'sp-project-card',
+  template: '<span>Mock Project Card</span>',
+})
+class MockProjectCardComponent {
+  @Input()
+  data: Project;
+}
 
 describe('FavProjectsComponent', () => {
   let component: FavProjectsComponent;
@@ -16,7 +29,14 @@ describe('FavProjectsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FavProjectsComponent],
+      imports: [
+        NoopAnimationsModule,
+        MaterialModule,
+      ],
+      declarations: [
+        FavProjectsComponent,
+        MockProjectCardComponent,
+      ],
     })
       .compileComponents();
   }));
