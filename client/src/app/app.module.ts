@@ -17,6 +17,7 @@ import { LogoutComponent } from './parts/logout/logout.component';
 import { ProjectCardComponent } from './parts/project-card/project-card.component';
 import { ProjectInfoComponent } from './parts/project-info/project-info.component';
 import { ProjectListComponent } from './parts/project-list/project-list.component';
+import { IssueTypePipe } from './pipes/issue-type.pipe';
 import { ProjSelectPipe } from './pipes/proj-select.pipe';
 import { AboutComponent } from './routes/about/about.component';
 import { HomeComponent } from './routes/home/home.component';
@@ -43,6 +44,7 @@ import { StrayComponent } from './routes/stray/stray.component';
     FavProjectsComponent,
     ProjectCardComponent,
     ProjSelectPipe,
+    IssueTypePipe,
   ],
   imports: [
     BrowserModule,
