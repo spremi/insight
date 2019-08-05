@@ -7,14 +7,22 @@
 //
 
 import { Pipe, PipeTransform } from '@angular/core';
+import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+import { IssueElement } from '../models/issue';
+import { IssueStatusService } from '../services/issue/issue-status.service';
 
 @Pipe({
   name: 'issueStatus',
 })
 export class IssueStatusPipe implements PipeTransform {
 
-  transform(value: any, ...args: any[]): any {
-    return null;
-  }
+  constructor(private svc: IssueStatusService) { }
 
+  transform(value: string): Observable<string> {
+    return this.svc.getOne(value).pipe(
+      filter(obj => !!obj),
+      map((obj: IssueElement) => obj.name)
+    );
+  }
 }
