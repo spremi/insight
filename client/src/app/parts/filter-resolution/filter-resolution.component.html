@@ -1,1 +1,8 @@
-<p>filter-resolution works!</p>
+<h3 class="mat-h3">RESOLUTIONS</h3>
+
+<mat-selection-list #filterResolution dense
+  (selectionChange)="applyFilter(filterResolution.selectedOptions.selected)">
+  <mat-list-option *ngFor="let item of list">
+    {{item.name}}
+  </mat-list-option>
+</mat-selection-list>
