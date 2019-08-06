@@ -1,1 +1,8 @@
-<p>filter-type works!</p>
+<h3 class="mat-h3">TYPES</h3>
+
+<mat-selection-list #filterTypes dense
+  (selectionChange)="applyFilter(filterTypes.selectedOptions.selected)">
+  <mat-list-option *ngFor="let item of list">
+    {{item.name}}
+  </mat-list-option>
+</mat-selection-list>
