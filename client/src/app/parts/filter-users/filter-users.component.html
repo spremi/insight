@@ -1,1 +1,8 @@
-<p>filter-users works!</p>
+<h3 class="mat-h3">USERS</h3>
+
+<mat-selection-list #filterUsers dense
+  (selectionChange)="applyFilter(filterUsers.selectedOptions.selected)">
+  <mat-list-option *ngFor="let item of list">
+    {{item.name}}
+  </mat-list-option>
+</mat-selection-list>
