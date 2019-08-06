@@ -7,6 +7,9 @@
 //
 
 import { Component, OnInit } from '@angular/core';
+import { MatListOption } from '@angular/material/list';
+import { User } from 'src/app/models/user';
+import { UserDataService } from 'src/app/services/user/user-data.service';
 
 @Component({
   selector: 'sp-filter-users',
@@ -14,10 +17,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-users.component.sass'],
 })
 export class FilterUsersComponent implements OnInit {
+  /**
+   * List of users.
+   */
+  list: User[];
 
-  constructor() { }
+  constructor(private userDataSvc: UserDataService) { }
 
   ngOnInit() {
+    this.userDataSvc.getUsers().subscribe((result) => {
+      this.list = result;
+    });
   }
 
+  applyFilter(selected: MatListOption[]) {
+    console.log('TODO: Dispatch action');
+  }
 }
