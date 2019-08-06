@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './modules/material/material.module';
 import { FavProjectsComponent } from './parts/fav-projects/fav-projects.component';
+import { FilterUsersComponent } from './parts/filter-users/filter-users.component';
 import { FooterComponent } from './parts/footer/footer.component';
 import { HeaderComponent } from './parts/header/header.component';
 import { IssueInfoComponent } from './parts/issue-info/issue-info.component';
@@ -53,6 +54,7 @@ import { StrayComponent } from './routes/stray/stray.component';
     IssueStatusPipe,
     IssueResolutionPipe,
     ProjectSummaryComponent,
+    FilterUsersComponent,
   ],
   imports: [
     BrowserModule,
