@@ -12,6 +12,7 @@ import { FilterComponentsComponent } from './parts/filter-components/filter-comp
 import { FilterPriorityComponent } from './parts/filter-priority/filter-priority.component';
 import { FilterResolutionComponent } from './parts/filter-resolution/filter-resolution.component';
 import { FilterStatusComponent } from './parts/filter-status/filter-status.component';
+import { FilterTypeComponent } from './parts/filter-type/filter-type.component';
 import { FilterUsersComponent } from './parts/filter-users/filter-users.component';
 import { FooterComponent } from './parts/footer/footer.component';
 import { HeaderComponent } from './parts/header/header.component';
@@ -63,6 +64,7 @@ import { StrayComponent } from './routes/stray/stray.component';
     FilterStatusComponent,
     FilterPriorityComponent,
     FilterResolutionComponent,
+    FilterTypeComponent,
   ],
   imports: [
     BrowserModule,
