@@ -1,1 +1,8 @@
-<p>filter-priority works!</p>
+<h3 class="mat-h3">PRIORITY</h3>
+
+<mat-selection-list #filterPriority dense
+  (selectionChange)="applyFilter(filterPriority.selectedOptions.selected)">
+  <mat-list-option *ngFor="let item of list">
+    {{item.name}}
+  </mat-list-option>
+</mat-selection-list>
