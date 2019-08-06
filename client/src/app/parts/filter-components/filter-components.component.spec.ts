@@ -8,6 +8,8 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 import { FilterComponentsComponent } from './filter-components.component';
 
 describe('FilterComponentsComponent', () => {
@@ -16,6 +18,11 @@ describe('FilterComponentsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        NoopAnimationsModule,
+        MaterialModule,
+      ],
+
       declarations: [FilterComponentsComponent],
     })
       .compileComponents();
