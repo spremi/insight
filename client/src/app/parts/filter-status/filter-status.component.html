@@ -1,1 +1,8 @@
-<p>filter-status works!</p>
+<h3 class="mat-h3">STATUS</h3>
+
+<mat-selection-list #filterStatus dense
+  (selectionChange)="applyFilter(filterStatus.selectedOptions.selected)">
+  <mat-list-option *ngFor="let item of list">
+    {{item.name}}
+  </mat-list-option>
+</mat-selection-list>

@@ -7,6 +7,9 @@
 //
 
 import { Component, OnInit } from '@angular/core';
+import { MatListOption } from '@angular/material/list';
+import { IssueElement } from 'src/app/models/issue';
+import { IssueDataService } from 'src/app/services/issue/issue-data.service';
 
 @Component({
   selector: 'sp-filter-status',
@@ -14,10 +17,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-status.component.sass'],
 })
 export class FilterStatusComponent implements OnInit {
+  /**
+   * List of issue statuses.
+   */
+  list: IssueElement[];
 
-  constructor() { }
+  constructor(private issueDataSvc: IssueDataService) { }
 
   ngOnInit() {
+    this.issueDataSvc.getStatuses().subscribe((result) => {
+      this.list = result;
+    });
   }
 
+  applyFilter(selected: MatListOption[]) {
+    console.log('TODO: Dispatch action');
+  }
 }
