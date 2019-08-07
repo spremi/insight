@@ -14,10 +14,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./project.component.sass'],
 })
 export class ProjectComponent implements OnInit {
+  /**
+   * Was any of fixed/affected versions selected?
+   */
+  versionsSelected = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  selectVersions() {
+    console.log('TODO: Dispatch action');
+    this.versionsSelected = true;
+  }
 }

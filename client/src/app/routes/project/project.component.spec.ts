@@ -31,6 +31,11 @@ class MockFilterComponentsComponent { }
 })
 class MockFilterUsersComponent { }
 
+@Component({
+  selector: 'sp-filter-versions',
+  template: '<span>Mock Filter (Versions)</span>',
+})
+class MockFilterVersionsComponent { }
 
 describe('ProjectComponent', () => {
   let component: ProjectComponent;
@@ -47,6 +52,7 @@ describe('ProjectComponent', () => {
         MockProjectSummaryComponent,
         MockFilterComponentsComponent,
         MockFilterUsersComponent,
+        MockFilterVersionsComponent,
       ],
     })
       .compileComponents();

@@ -4,8 +4,26 @@
   <button mat-button>SWITCH</button>
 </mat-toolbar>
 
-<section>
-  <sp-project-summary></sp-project-summary>
-  <sp-filter-components></sp-filter-components>
-  <sp-filter-users></sp-filter-users>
-</section>
+<ng-container
+  *ngIf="versionsSelected; then viewSummary; else viewVersions">
+</ng-container>
+
+<ng-template #viewSummary>
+  <section>
+    <sp-project-summary></sp-project-summary>
+    <sp-filter-components></sp-filter-components>
+    <sp-filter-users></sp-filter-users>
+  </section>
+</ng-template>
+
+<ng-template #viewVersions>
+  <section>
+    <sp-filter-versions title="Affected versions"></sp-filter-versions>
+    <sp-filter-versions title="Fixed versions"></sp-filter-versions>
+
+    <!-- TODO: Enable only if there is a selection -->
+    <button mat-button
+      class="select"
+      (click)="selectVersions()">SELECT</button>
+  </section>
+</ng-template>
