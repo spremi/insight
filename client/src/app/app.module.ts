@@ -10,6 +10,7 @@ import { MaterialModule } from './modules/material/material.module';
 import { FavProjectsComponent } from './parts/fav-projects/fav-projects.component';
 import { FilterComponentsComponent } from './parts/filter-components/filter-components.component';
 import { FilterPriorityComponent } from './parts/filter-priority/filter-priority.component';
+import { FilterProjectsComponent } from './parts/filter-projects/filter-projects.component';
 import { FilterResolutionComponent } from './parts/filter-resolution/filter-resolution.component';
 import { FilterStatusComponent } from './parts/filter-status/filter-status.component';
 import { FilterUsersComponent } from './parts/filter-users/filter-users.component';
@@ -71,6 +72,7 @@ import { StrayComponent } from './routes/stray/stray.component';
     TileComponent,
     PanelComponent,
     FilterVersionsComponent,
+    FilterProjectsComponent,
   ],
   imports: [
     BrowserModule,
