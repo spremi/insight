@@ -6,7 +6,8 @@
 // Available under terms of the BSD-3-Clause license.
 //
 
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { InfoData } from 'src/app/models/generic';
 
 @Component({
   selector: 'sp-info',
@@ -14,10 +15,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info.component.sass'],
 })
 export class InfoComponent implements OnInit {
+  @Input()
+  data: InfoData;
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }
