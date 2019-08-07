@@ -20,6 +20,7 @@ import { IssueInfoComponent } from './parts/issue-info/issue-info.component';
 import { IssueListComponent } from './parts/issue-list/issue-list.component';
 import { LoginComponent } from './parts/login/login.component';
 import { LogoutComponent } from './parts/logout/logout.component';
+import { PanelComponent } from './parts/panel/panel.component';
 import { ProjectCardComponent } from './parts/project-card/project-card.component';
 import { ProjectInfoComponent } from './parts/project-info/project-info.component';
 import { ProjectListComponent } from './parts/project-list/project-list.component';
@@ -67,6 +68,7 @@ import { StrayComponent } from './routes/stray/stray.component';
     FilterResolutionComponent,
     InfoComponent,
     TileComponent,
+    PanelComponent,
   ],
   imports: [
     BrowserModule,
