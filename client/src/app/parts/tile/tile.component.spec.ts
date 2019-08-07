@@ -8,6 +8,9 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/app/modules/material/material.module';
+import { InfoComponent } from '../info/info.component';
 import { TileComponent } from './tile.component';
 
 describe('TileComponent', () => {
@@ -16,7 +19,14 @@ describe('TileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TileComponent],
+      imports: [
+        NoopAnimationsModule,
+        MaterialModule,
+      ],
+      declarations: [
+        TileComponent,
+        InfoComponent,
+      ],
     })
       .compileComponents();
   }));
