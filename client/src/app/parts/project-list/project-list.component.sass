@@ -9,14 +9,19 @@
     span
       font-size: 16px
 
-  .filter
-    padding: 8px 16px
+  .controls
+    display: flex
+    padding: 16px 16px 8px 16px
+    flex-direction: row
+    justify-content: space-between
+    border-bottom: 1px solid #c0c0c0
 
-  mat-selection-list
-    overflow-y: auto
-    flex-grow: 1
+    button
+      align-self: center
 
-  .select
-    margin-top: 8px
-    margin-bottom: 8px
-    align-self: center
+  .list
+    display: grid
+    padding: 8px 16px 16px 16px
+    grid-row-gap: 16px
+    grid-column-gap: 16px
+    grid-template-columns: repeat(auto-fit, minmax(128px, 1fr))
