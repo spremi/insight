@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
         desc: 'Project category 001',
       },
       components: [],
+      versions: [],
     },
     {
       id: '002',
@@ -45,6 +46,7 @@ export class HomeComponent implements OnInit {
         desc: 'Project category 001',
       },
       components: [],
+      versions: [],
     },
     {
       id: '003',
@@ -58,6 +60,7 @@ export class HomeComponent implements OnInit {
         desc: 'Project category 002',
       },
       components: [],
+      versions: [],
     },
   ];
 
