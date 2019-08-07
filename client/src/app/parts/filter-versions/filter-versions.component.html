@@ -1,1 +1,8 @@
-<p>filter-versions works!</p>
+<h3 class="mat-h3">{{title}}</h3>
+
+<mat-selection-list #filterVersions
+  (selectionChange)="applyFilter(filterVersions.selectedOptions.selected)">
+  <mat-list-option *ngFor="let item of list" [ngClass]="{'released': item.released}">
+    {{item.name}}
+  </mat-list-option>
+</mat-selection-list>
