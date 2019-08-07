@@ -14,6 +14,7 @@ import { FilterResolutionComponent } from './parts/filter-resolution/filter-reso
 import { FilterStatusComponent } from './parts/filter-status/filter-status.component';
 import { FilterTypeComponent } from './parts/filter-type/filter-type.component';
 import { FilterUsersComponent } from './parts/filter-users/filter-users.component';
+import { FilterVersionsComponent } from './parts/filter-versions/filter-versions.component';
 import { FooterComponent } from './parts/footer/footer.component';
 import { HeaderComponent } from './parts/header/header.component';
 import { InfoComponent } from './parts/info/info.component';
@@ -71,6 +72,7 @@ import { StrayComponent } from './routes/stray/stray.component';
     InfoComponent,
     TileComponent,
     PanelComponent,
+    FilterVersionsComponent,
   ],
   imports: [
     BrowserModule,
