@@ -6,7 +6,8 @@
 // Available under terms of the BSD-3-Clause license.
 //
 
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PanelData } from 'src/app/models/generic';
 
 @Component({
   selector: 'sp-panel',
@@ -14,6 +15,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./panel.component.sass'],
 })
 export class PanelComponent implements OnInit {
+  @Input()
+  data: PanelData;
 
   constructor() { }
 
