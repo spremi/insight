@@ -25,6 +25,7 @@ import { ProjectCardComponent } from './parts/project-card/project-card.componen
 import { ProjectInfoComponent } from './parts/project-info/project-info.component';
 import { ProjectListComponent } from './parts/project-list/project-list.component';
 import { ProjectSummaryComponent } from './parts/project-summary/project-summary.component';
+import { TileComponent } from './parts/tile/tile.component';
 import { IssuePriorityPipe } from './pipes/issue-priority.pipe';
 import { IssueResolutionPipe } from './pipes/issue-resolution.pipe';
 import { IssueStatusPipe } from './pipes/issue-status.pipe';
@@ -67,6 +68,7 @@ import { StrayComponent } from './routes/stray/stray.component';
     FilterResolutionComponent,
     FilterTypeComponent,
     InfoComponent,
+    TileComponent,
   ],
   imports: [
     BrowserModule,
