@@ -32,6 +32,23 @@ export interface ProjectCategory {
 }
 
 /**
+ * Describes a project version.
+ */
+export interface ProjectVersion {
+  /** Version identifier. */
+  id: string;
+
+  /** Version name. */
+  name: string;
+
+  /** Version description. */
+  desc: string;
+
+  /** Was version released? */
+  released: boolean;
+}
+
+/**
  * Describes a project.
  */
 export interface Project {
@@ -55,4 +72,7 @@ export interface Project {
 
   /** List of components. */
   components: ProjectComponent[];
+
+  /** List of versions. */
+  versions: ProjectVersion[];
 }
