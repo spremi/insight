@@ -8,7 +8,18 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { Component, Input } from '@angular/core';
+import { TileData } from 'src/app/models/generic';
 import { PanelComponent } from './panel.component';
+
+@Component({
+  selector: 'sp-tile',
+  template: '<span>Mock Tile</span>',
+})
+class MockTileComponent {
+  @Input()
+  data: TileData[];
+}
 
 describe('PanelComponent', () => {
   let component: PanelComponent;
@@ -16,7 +27,10 @@ describe('PanelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PanelComponent],
+      declarations: [
+        PanelComponent,
+        MockTileComponent,
+      ],
     })
       .compileComponents();
   }));

@@ -1,1 +1,6 @@
-<p>panel works!</p>
+<ng-container *ngIf="data">
+  <div class="title">{{data.title}}</div>
+  <div class="panels">
+    <sp-tile *ngFor="let group of data.groups" [data]="group"></sp-tile>
+  </div>
+</ng-container>
