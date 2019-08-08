@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "insight"
+  "defaultProject": "insight",
+  "cli": {
+    "defaultCollection": "@ngxs/schematics"
+  }
 }
