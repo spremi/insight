@@ -4,6 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsModule } from '@ngxs/store';
+
+import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './modules/material/material.module';
@@ -38,6 +43,7 @@ import { HomeComponent } from './routes/home/home.component';
 import { IssueComponent } from './routes/issue/issue.component';
 import { ProjectComponent } from './routes/project/project.component';
 import { StrayComponent } from './routes/stray/stray.component';
+import { AppState } from './store';
 
 @NgModule({
   declarations: [
@@ -82,6 +88,15 @@ import { StrayComponent } from './routes/stray/stray.component';
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
+    NgxsModule.forRoot(AppState, {
+      developmentMode: !environment.production,
+    }),
+    NgxsLoggerPluginModule.forRoot({
+      disabled: environment.production,
+    }),
+    NgxsReduxDevtoolsPluginModule.forRoot({
+      disabled: environment.production,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
