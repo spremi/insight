@@ -22,7 +22,11 @@ describe('Issue store', () => {
 
   it('should create an action and add an item', () => {
     const expected: IssueStateModel = {
-      items: ['item-1'],
+      list: [],
+      types: [],
+      priorities: [],
+      statuses: [],
+      resolutions: [],
     };
     store.dispatch(new IssueAction('item-1'));
     const actual = store.selectSnapshot(IssueState.getState);
