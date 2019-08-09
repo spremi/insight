@@ -8,7 +8,7 @@
 
 import { async, TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
-import { IssueAction } from './issue.actions';
+import { IssueReset } from './issue.actions';
 import { initIssueState, IssueState, IssueStateModel } from './issue.state';
 
 describe('Issue store', () => {
@@ -20,10 +20,10 @@ describe('Issue store', () => {
     store = TestBed.get(Store);
   }));
 
-  it('should create an action and add an item', () => {
+  it('should create an action to reset state', () => {
     const expected: IssueStateModel = initIssueState;
 
-    store.dispatch(new IssueAction('item-1'));
+    store.dispatch(new IssueReset());
     const actual = store.selectSnapshot(IssueState.getState);
     expect(actual).toEqual(expected);
   });
