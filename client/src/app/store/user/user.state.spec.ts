@@ -22,7 +22,8 @@ describe('User store', () => {
 
   it('should create an action and add an item', () => {
     const expected: UserStateModel = {
-      items: ['item-1'],
+      user: null,
+      token: null,
     };
     store.dispatch(new UserAction('item-1'));
     const actual = store.selectSnapshot(UserState.getState);
