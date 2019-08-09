@@ -7,17 +7,22 @@
 //
 
 import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { User } from 'src/app/models/user';
 import { UserAction } from './user.actions';
 
 export interface UserStateModel {
-  items: string[];
+  user: User;
+  token: string;
 }
+
+export const initUserState: UserStateModel = {
+  user: null,
+  token: null,
+};
 
 @State<UserStateModel>({
   name: 'user',
-  defaults: {
-    items: [],
-  },
+  defaults: initUserState,
 })
 export class UserState {
 
@@ -26,10 +31,22 @@ export class UserState {
     return state;
   }
 
+  @Selector()
+  public static getUser(state: UserStateModel): User {
+    return state.user;
+  }
+
+  @Selector()
+  public static getToken(state: UserStateModel): string {
+    return state.token;
+  }
+
+  @Selector()
+  public static isAuthenticated(state: UserStateModel): boolean {
+    return !!state.token;
+  }
+
   @Action(UserAction)
   public add(ctx: StateContext<UserStateModel>, { payload }: UserAction) {
-    const stateModel = ctx.getState();
-    stateModel.items = [...stateModel.items, payload];
-    ctx.setState(stateModel);
   }
 }
