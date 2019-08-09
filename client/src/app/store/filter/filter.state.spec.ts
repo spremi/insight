@@ -8,7 +8,7 @@
 
 import { async, TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
-import { FilterAction } from './filter.actions';
+import { FilterDummy } from './filter.actions';
 import { FilterState, FilterStateModel } from './filter.state';
 
 describe('Filter store', () => {
@@ -30,7 +30,7 @@ describe('Filter store', () => {
       fixVersions: [],
       affectedVersions: [],
     };
-    store.dispatch(new FilterAction('item-1'));
+    store.dispatch(new FilterDummy());
     const actual = store.selectSnapshot(FilterState.getState);
     expect(actual).toEqual(expected);
   });

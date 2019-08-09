@@ -7,7 +7,7 @@
 //
 
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { FilterAction } from './filter.actions';
+import { FilterAdd, FilterClear, FilterDummy, FilterRemove } from './filter.actions';
 
 export interface FilterStateModel {
   components: string[];
@@ -73,7 +73,20 @@ export class FilterState {
     return state.affectedVersions;
   }
 
-  @Action(FilterAction)
-  public add(ctx: StateContext<FilterStateModel>, { payload }: FilterAction) {
+  @Action(FilterDummy)
+  public dummy(ctx: StateContext<FilterStateModel>) {
+  }
+
+  @Action(FilterAdd)
+  public add(ctx: StateContext<FilterStateModel>, { payload }: FilterAdd) {
+
+  }
+
+  @Action(FilterRemove)
+  public remove(ctx: StateContext<FilterStateModel>, { payload }: FilterRemove) {
+  }
+
+  @Action(FilterClear)
+  public clear(ctx: StateContext<FilterStateModel>, { payload }: FilterClear) {
   }
 }
