@@ -9,7 +9,13 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Project, ProjectComponent, ProjectVersion } from 'src/app/models/project';
 import { User } from 'src/app/models/user';
-import { ProjectAction } from './project.actions';
+import {
+  ProjectFetchComponents, ProjectFetchComponentsFailed, ProjectFetchData,
+  ProjectFetchDataFailed, ProjectFetchList,
+  ProjectFetchListFailed, ProjectFetchUsers,
+  ProjectFetchUsersFailed, ProjectFetchVersions,
+  ProjectFetchVersionsFailed, ProjectReset
+} from './project.actions';
 
 export interface ProjectStateModel {
   /** List of projects accessible to user. */
@@ -71,7 +77,56 @@ export class ProjectState {
     return state.users;
   }
 
-  @Action(ProjectAction)
-  public add(ctx: StateContext<ProjectStateModel>, { payload }: ProjectAction) {
+  @Action(ProjectReset)
+  public reset(ctx: StateContext<ProjectStateModel>) {
+    ctx.setState(initProjectState);
+  }
+
+  @Action(ProjectFetchList)
+  public fetchList(ctx: StateContext<ProjectStateModel>) {
+  }
+
+  @Action(ProjectFetchListFailed)
+  public fetchListFailed(ctx: StateContext<ProjectStateModel>) {
+  }
+
+  @Action(ProjectFetchData)
+  public fetchData(
+    ctx: StateContext<ProjectStateModel>,
+    { payload }: ProjectFetchData) {
+  }
+
+  @Action(ProjectFetchDataFailed)
+  public fetchDataFailed(ctx: StateContext<ProjectStateModel>) {
+  }
+
+  @Action(ProjectFetchComponents)
+  public fetchComponents(
+    ctx: StateContext<ProjectStateModel>,
+    { payload }: ProjectFetchComponents) {
+  }
+
+  @Action(ProjectFetchComponentsFailed)
+  public fetchComponentsFailed(ctx: StateContext<ProjectStateModel>) {
+  }
+
+  @Action(ProjectFetchVersions)
+  public fetchVersions(
+    ctx: StateContext<ProjectStateModel>,
+    { payload }: ProjectFetchVersions) {
+  }
+
+  @Action(ProjectFetchVersionsFailed)
+  public fetchVersionsFailed(ctx: StateContext<ProjectStateModel>) {
+  }
+
+  @Action(ProjectFetchUsers)
+  public fetchUsers(
+    ctx: StateContext<ProjectStateModel>,
+    { payload }: ProjectFetchUsers) {
+  }
+
+  @Action(ProjectFetchUsersFailed)
+  public fetchUsersFailed(ctx: StateContext<ProjectStateModel>) {
   }
 }

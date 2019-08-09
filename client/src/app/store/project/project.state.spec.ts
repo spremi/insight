@@ -8,7 +8,7 @@
 
 import { async, TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
-import { ProjectAction } from './project.actions';
+import { ProjectReset } from './project.actions';
 import { initProjectState, ProjectState, ProjectStateModel } from './project.state';
 
 describe('Project store', () => {
@@ -20,10 +20,10 @@ describe('Project store', () => {
     store = TestBed.get(Store);
   }));
 
-  it('should create an action and add an item', () => {
+  it('should create an action to reset state', () => {
     const expected: ProjectStateModel = initProjectState;
 
-    store.dispatch(new ProjectAction('item-1'));
+    store.dispatch(new ProjectReset());
     const actual = store.selectSnapshot(ProjectState.getState);
     expect(actual).toEqual(expected);
   });
