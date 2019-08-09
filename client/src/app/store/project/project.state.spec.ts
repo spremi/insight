@@ -22,7 +22,10 @@ describe('Project store', () => {
 
   it('should create an action and add an item', () => {
     const expected: ProjectStateModel = {
-      items: ['item-1'],
+      list: [],
+      info: null,
+      components: [],
+      versions: [],
     };
     store.dispatch(new ProjectAction('item-1'));
     const actual = store.selectSnapshot(ProjectState.getState);
