@@ -8,7 +8,7 @@
 
 import { async, TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
-import { UserAction } from './user.actions';
+import { UserDummy } from './user.actions';
 import { UserState, UserStateModel } from './user.state';
 
 describe('User store', () => {
@@ -25,7 +25,7 @@ describe('User store', () => {
       user: null,
       token: null,
     };
-    store.dispatch(new UserAction('item-1'));
+    store.dispatch(new UserDummy());
     const actual = store.selectSnapshot(UserState.getState);
     expect(actual).toEqual(expected);
   });

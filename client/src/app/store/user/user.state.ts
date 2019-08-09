@@ -8,7 +8,10 @@
 
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { User } from 'src/app/models/user';
-import { UserAction } from './user.actions';
+import {
+  UserDummy, UserFetchData, UserFetchDataFailed,
+  UserLogin, UserLoginFailed, UserLogout
+} from './user.actions';
 
 export interface UserStateModel {
   user: User;
@@ -44,7 +47,27 @@ export class UserState {
     return !!state.token;
   }
 
-  @Action(UserAction)
-  public add(ctx: StateContext<UserStateModel>, { payload }: UserAction) {
+  @Action(UserDummy)
+  public dummy(ctx: StateContext<UserStateModel>) {
+  }
+
+  @Action(UserLogin)
+  public login(ctx: StateContext<UserStateModel>, { payload }: UserLogin) {
+  }
+
+  @Action(UserLoginFailed)
+  public loginFailed(ctx: StateContext<UserStateModel>) {
+  }
+
+  @Action(UserLogout)
+  public logout(ctx: StateContext<UserStateModel>) {
+  }
+
+  @Action(UserFetchData)
+  public fetchData(ctx: StateContext<UserStateModel>, { payload }: UserFetchData) {
+  }
+
+  @Action(UserFetchDataFailed)
+  public fetchDataFailed(ctx: StateContext<UserStateModel>) {
   }
 }
