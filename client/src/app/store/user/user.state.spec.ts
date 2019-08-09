@@ -8,7 +8,7 @@
 
 import { async, TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
-import { UserAction } from './user.actions';
+import { UserReset } from './user.actions';
 import { initUserState, UserState, UserStateModel } from './user.state';
 
 describe('User store', () => {
@@ -20,10 +20,10 @@ describe('User store', () => {
     store = TestBed.get(Store);
   }));
 
-  it('should create an action and add an item', () => {
+  it('should create an action to reset state', () => {
     const expected: UserStateModel = initUserState;
 
-    store.dispatch(new UserAction('item-1'));
+    store.dispatch(new UserReset());
     const actual = store.selectSnapshot(UserState.getState);
     expect(actual).toEqual(expected);
   });
