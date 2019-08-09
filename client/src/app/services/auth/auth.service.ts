@@ -7,6 +7,7 @@
 //
 
 import { Injectable } from '@angular/core';
+import { of, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,4 +15,12 @@ import { Injectable } from '@angular/core';
 export class AuthService {
 
   constructor() { }
+
+  login(id: string, pass: string): Observable<string> {
+    return of('TOKEN');
+  }
+
+  logout(): Observable<boolean> {
+    return of(true);
+  }
 }
