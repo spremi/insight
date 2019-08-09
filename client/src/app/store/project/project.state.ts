@@ -8,7 +8,11 @@
 
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Project, ProjectComponent, ProjectVersion } from 'src/app/models/project';
-import { ProjectAction } from './project.actions';
+import {
+  ProjectDummy, ProjectFetchComponents, ProjectFetchComponentsFailed,
+  ProjectFetchInfo, ProjectFetchInfoFailed, ProjectFetchList,
+  ProjectFetchListFailed, ProjectFetchVersions, ProjectFetchVersionsFailed
+} from './project.actions';
 
 export interface ProjectStateModel {
   /** List of projects accessible to user. */
@@ -60,7 +64,45 @@ export class ProjectState {
     return state.versions;
   }
 
-  @Action(ProjectAction)
-  public add(ctx: StateContext<ProjectStateModel>, { payload }: ProjectAction) {
+  @Action(ProjectDummy)
+  public dummy(ctx: StateContext<ProjectStateModel>) {
+  }
+
+  @Action(ProjectFetchList)
+  public fetchList(ctx: StateContext<ProjectStateModel>) {
+  }
+
+  @Action(ProjectFetchListFailed)
+  public fetchListFailed(ctx: StateContext<ProjectStateModel>) {
+  }
+
+  @Action(ProjectFetchInfo)
+  public fetchInfo(
+    ctx: StateContext<ProjectStateModel>,
+    { payload }: ProjectFetchInfo) {
+  }
+
+  @Action(ProjectFetchInfoFailed)
+  public fetchInfoFailed(ctx: StateContext<ProjectStateModel>) {
+  }
+
+  @Action(ProjectFetchComponents)
+  public fetchComponents(
+    ctx: StateContext<ProjectStateModel>,
+    { payload }: ProjectFetchComponents) {
+  }
+
+  @Action(ProjectFetchComponentsFailed)
+  public fetchComponentsFailed(ctx: StateContext<ProjectStateModel>) {
+  }
+
+  @Action(ProjectFetchVersions)
+  public fetchVersions(
+    ctx: StateContext<ProjectStateModel>,
+    { payload }: ProjectFetchVersions) {
+  }
+
+  @Action(ProjectFetchVersionsFailed)
+  public fetchVersionsFailed(ctx: StateContext<ProjectStateModel>) {
   }
 }

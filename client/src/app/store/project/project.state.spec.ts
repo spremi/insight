@@ -8,7 +8,7 @@
 
 import { async, TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
-import { ProjectAction } from './project.actions';
+import { ProjectDummy } from './project.actions';
 import { ProjectState, ProjectStateModel } from './project.state';
 
 describe('Project store', () => {
@@ -27,7 +27,7 @@ describe('Project store', () => {
       components: [],
       versions: [],
     };
-    store.dispatch(new ProjectAction('item-1'));
+    store.dispatch(new ProjectDummy());
     const actual = store.selectSnapshot(ProjectState.getState);
     expect(actual).toEqual(expected);
   });
