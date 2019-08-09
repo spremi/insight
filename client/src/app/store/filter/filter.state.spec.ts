@@ -22,7 +22,13 @@ describe('Filter store', () => {
 
   it('should create an action and add an item', () => {
     const expected: FilterStateModel = {
-      items: ['item-1'],
+      components: [],
+      users: [],
+      statuses: [],
+      priorities: [],
+      resolutions: [],
+      fixVersions: [],
+      affectedVersions: [],
     };
     store.dispatch(new FilterAction('item-1'));
     const actual = store.selectSnapshot(FilterState.getState);
