@@ -8,7 +8,7 @@
 
 import { async, TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
-import { IssueAction } from './issue.actions';
+import { IssueDummy } from './issue.actions';
 import { IssueState, IssueStateModel } from './issue.state';
 
 describe('Issue store', () => {
@@ -28,7 +28,7 @@ describe('Issue store', () => {
       statuses: [],
       resolutions: [],
     };
-    store.dispatch(new IssueAction('item-1'));
+    store.dispatch(new IssueDummy());
     const actual = store.selectSnapshot(IssueState.getState);
     expect(actual).toEqual(expected);
   });
