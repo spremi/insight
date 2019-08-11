@@ -7,7 +7,9 @@
 //
 
 import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { tap } from 'rxjs/operators';
 import { User } from 'src/app/models/user';
+import { UserDataService } from 'src/app/services/user/user-data.service';
 import {
   UserDummy, UserFetchData, UserFetchDataFailed,
   UserLogin, UserLoginFailed, UserLogout
@@ -26,6 +28,8 @@ export interface UserStateModel {
   },
 })
 export class UserState {
+
+  constructor(private userDataSvc: UserDataService) { }
 
   @Selector()
   public static getState(state: UserStateModel) {
@@ -65,6 +69,9 @@ export class UserState {
 
   @Action(UserFetchData)
   public fetchData(ctx: StateContext<UserStateModel>, { payload }: UserFetchData) {
+    return this.userDataSvc.getUser(payload.id).pipe(tap((data) => {
+      ctx.patchState({ user: data });
+    }));
   }
 
   @Action(UserFetchDataFailed)
