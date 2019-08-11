@@ -9,6 +9,7 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
 import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserDataService } from 'src/app/services/user/user-data.service';
 import {
   UserDummy, UserFetchData, UserFetchDataFailed,
@@ -29,7 +30,7 @@ export interface UserStateModel {
 })
 export class UserState {
 
-  constructor(private userDataSvc: UserDataService) { }
+  constructor(private authSvc: AuthService, private userDataSvc: UserDataService) { }
 
   @Selector()
   public static getState(state: UserStateModel) {
@@ -57,6 +58,12 @@ export class UserState {
 
   @Action(UserLogin)
   public login(ctx: StateContext<UserStateModel>, { payload }: UserLogin) {
+    return this.authSvc.login(payload.id, payload.pass).pipe(tap((result) => {
+      ctx.patchState({ token: result });
+
+      // Dispatch action to fetch user details.
+      ctx.dispatch(new UserFetchData({ id: payload.id }));
+    }));
   }
 
   @Action(UserLoginFailed)
@@ -65,6 +72,9 @@ export class UserState {
 
   @Action(UserLogout)
   public logout(ctx: StateContext<UserStateModel>) {
+    return this.authSvc.logout().pipe(tap(() => {
+      ctx.setState({ token: null, user: null });
+    }));
   }
 
   @Action(UserFetchData)
