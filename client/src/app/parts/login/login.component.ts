@@ -8,6 +8,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngxs/store';
+import { UserLogin } from 'src/app/store';
 
 @Component({
   selector: 'sp-login',
@@ -20,7 +22,7 @@ export class LoginComponent implements OnInit {
     pass: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private store: Store) { }
 
   ngOnInit() {
   }
@@ -40,6 +42,6 @@ export class LoginComponent implements OnInit {
       pass: this.loginForm.get('pass').value,
     };
 
-    console.log('TODO: Dispatch action');
+    this.store.dispatch(new UserLogin(payload));
   }
 }
