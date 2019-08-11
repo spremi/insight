@@ -77,33 +77,66 @@ export class UiState {
   public setWaiting(
     ctx: StateContext<UiStateModel>,
     { payload }: UiSetWaiting) {
+    ctx.patchState({ waiting: payload.flag });
   }
 
   @Action(UiSetProject)
   public setProject(
     ctx: StateContext<UiStateModel>,
     { payload }: UiSetProject) {
+    ctx.patchState({ project: payload.projectId });
   }
 
   @Action(UiSetIssue)
   public setIssue(
     ctx: StateContext<UiStateModel>,
     { payload }: UiSetIssue) {
+    ctx.patchState({ issue: payload.issueId });
   }
 
   @Action(UiFetchFavorites)
   public fetchFavorites(ctx: StateContext<UiStateModel>) {
+    const favs = localStorage.getItem('fav-projects');
+
+    if (favs) {
+      const list = favs.split(',');
+      ctx.patchState({ favProjects: list });
+    } else {
+      ctx.patchState({ favProjects: [] });
+    }
   }
 
   @Action(UiSetFavorites)
   public setFavorites(
     ctx: StateContext<UiStateModel>,
     { payload }: UiSetFavorites) {
+    //
+    // Leverage 'set' to avoid duplicate entries when favorite projects
+    // are added again.
+    //
+    const favSet = new Set(ctx.getState().favProjects);
+
+    payload.projects.forEach((proj) => {
+      favSet.add(proj);
+    });
+
+    const newFavs = Array.from(favSet);
+
+    localStorage.setItem('fav-projects', newFavs.join(','));
+
+    ctx.patchState({ favProjects: newFavs });
   }
 
   @Action(UiRemoveFavorite)
   public removeFavorites(
     ctx: StateContext<UiStateModel>,
     { payload }: UiRemoveFavorite) {
+    const favList = ctx.getState().favProjects;
+
+    const newFavs = favList.filter((arg) => arg !== payload.projectId);
+
+    localStorage.setItem('fav-projects', newFavs.join(','));
+
+    ctx.patchState({ favProjects: newFavs });
   }
 }
