@@ -8,7 +8,25 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { Component, Input } from '@angular/core';
+import { NgxsModule } from '@ngxs/store';
+import { Project } from 'src/app/models/project';
+import { AppState } from 'src/app/store';
 import { HomeComponent } from './home.component';
+
+@Component({
+  selector: 'sp-login',
+  template: '<span>Mock Login</span>',
+})
+class MockLoginComponent { }
+
+@Component({
+  selector: 'sp-project-list',
+  template: '<span>Mock Project List</span>',
+})
+class MockProjectListComponent {
+  @Input() projects: Project[];
+}
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -16,7 +34,14 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent],
+      imports: [
+        NgxsModule.forRoot(AppState),
+      ],
+      declarations: [
+        HomeComponent,
+        MockLoginComponent,
+        MockProjectListComponent,
+      ],
     })
       .compileComponents();
   }));

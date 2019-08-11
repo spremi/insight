@@ -1,1 +1,11 @@
-<p>home works!</p>
+<ng-container
+  *ngIf="auth$|async; then selectProjects; else showLogin">
+</ng-container>
+
+<ng-template #selectProjects>
+  <sp-project-list></sp-project-list>
+</ng-template>
+
+<ng-template #showLogin>
+  <sp-login></sp-login>
+</ng-template>
