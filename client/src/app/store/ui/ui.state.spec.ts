@@ -22,7 +22,12 @@ describe('Ui store', () => {
 
   it('should create an action and add an item', () => {
     const expected: UiStateModel = {
-      items: ['item-1'],
+      waiting: false,
+      favProjects: [],
+      project: null,
+      issue: null,
+      affectedVersions: [],
+      fixVersions: [],
     };
     store.dispatch(new UiAction('item-1'));
     const actual = store.selectSnapshot(UiState.getState);
