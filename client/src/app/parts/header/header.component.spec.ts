@@ -9,7 +9,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxsModule } from '@ngxs/store';
 import { MaterialModule } from 'src/app/modules/material/material.module';
+import { AppState } from 'src/app/store';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -21,6 +23,7 @@ describe('HeaderComponent', () => {
       imports: [
         NoopAnimationsModule,
         MaterialModule,
+        NgxsModule.forRoot(AppState),
       ],
       declarations: [HeaderComponent],
     })
