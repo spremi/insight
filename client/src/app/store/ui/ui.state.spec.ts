@@ -9,7 +9,7 @@
 import { async, TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
 import { UiAction } from './ui.actions';
-import { UiState, UiStateModel } from './ui.state';
+import { initUiState, UiState, UiStateModel } from './ui.state';
 
 describe('Ui store', () => {
   let store: Store;
@@ -21,9 +21,8 @@ describe('Ui store', () => {
   }));
 
   it('should create an action and add an item', () => {
-    const expected: UiStateModel = {
-      items: ['item-1'],
-    };
+    const expected: UiStateModel = initUiState;
+
     store.dispatch(new UiAction('item-1'));
     const actual = store.selectSnapshot(UiState.getState);
     expect(actual).toEqual(expected);
