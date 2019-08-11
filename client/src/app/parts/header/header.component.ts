@@ -7,6 +7,9 @@
 //
 
 import { Component, OnInit } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { UserLogout, UserState } from 'src/app/store';
 
 @Component({
   selector: 'sp-header',
@@ -14,10 +17,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.sass'],
 })
 export class HeaderComponent implements OnInit {
+  /**
+   * Is user authenticated?
+   */
+  @Select(UserState.isAuthenticated) isAuth$: Observable<boolean>;
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit() {
   }
 
+  logout() {
+    this.store.dispatch(new UserLogout());
+  }
 }
