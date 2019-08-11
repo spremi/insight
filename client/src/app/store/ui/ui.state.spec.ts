@@ -8,7 +8,7 @@
 
 import { async, TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
-import { UiAction } from './ui.actions';
+import { UiDummy } from './ui.actions';
 import { UiState, UiStateModel } from './ui.state';
 
 describe('Ui store', () => {
@@ -29,7 +29,7 @@ describe('Ui store', () => {
       affectedVersions: [],
       fixVersions: [],
     };
-    store.dispatch(new UiAction('item-1'));
+    store.dispatch(new UiDummy());
     const actual = store.selectSnapshot(UiState.getState);
     expect(actual).toEqual(expected);
   });
