@@ -7,7 +7,10 @@
 //
 
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { UiAction } from './ui.actions';
+import {
+  UiFetchFavorites, UiRemoveFavorite, UiReset, UiSetFavorites,
+  UiSetIssue, UiSetProject, UiSetWaiting
+} from './ui.actions';
 
 export interface UiStateModel {
   /** Waiting for action to complete */
@@ -66,7 +69,41 @@ export class UiState {
     return state.issue;
   }
 
-  @Action(UiAction)
-  public add(ctx: StateContext<UiStateModel>, { payload }: UiAction) {
+  @Action(UiReset)
+  public dummy(ctx: StateContext<UiStateModel>) {
+  }
+
+  @Action(UiSetWaiting)
+  public setWaiting(
+    ctx: StateContext<UiStateModel>,
+    { payload }: UiSetWaiting) {
+  }
+
+  @Action(UiSetProject)
+  public setProject(
+    ctx: StateContext<UiStateModel>,
+    { payload }: UiSetProject) {
+  }
+
+  @Action(UiSetIssue)
+  public setIssue(
+    ctx: StateContext<UiStateModel>,
+    { payload }: UiSetIssue) {
+  }
+
+  @Action(UiFetchFavorites)
+  public fetchFavorites(ctx: StateContext<UiStateModel>) {
+  }
+
+  @Action(UiSetFavorites)
+  public setFavorites(
+    ctx: StateContext<UiStateModel>,
+    { payload }: UiSetFavorites) {
+  }
+
+  @Action(UiRemoveFavorite)
+  public removeFavorites(
+    ctx: StateContext<UiStateModel>,
+    { payload }: UiRemoveFavorite) {
   }
 }
