@@ -93,45 +93,80 @@ export class UiState {
   public setWaiting(
     ctx: StateContext<UiStateModel>,
     { payload }: UiSetWaiting) {
+    ctx.patchState({ waiting: payload.flag });
   }
 
   @Action(UiSetProject)
   public setProject(
     ctx: StateContext<UiStateModel>,
     { payload }: UiSetProject) {
+    ctx.patchState({ project: payload.id });
   }
 
   @Action(UiSetIssue)
   public setIssue(
     ctx: StateContext<UiStateModel>,
     { payload }: UiSetIssue) {
+    ctx.patchState({ issue: payload.id });
   }
 
   @Action(UiSetAffectedVersions)
   public setAffectedVersions(
     ctx: StateContext<UiStateModel>,
     { payload }: UiSetAffectedVersions) {
+    ctx.patchState({ affectedVersions: payload.versions });
   }
 
   @Action(UiSetFixVersions)
   public setFixVersions(
     ctx: StateContext<UiStateModel>,
     { payload }: UiSetFixVersions) {
+    ctx.patchState({ fixVersions: payload.versions });
   }
 
   @Action(UiFetchFavorites)
   public fetchFavorites(ctx: StateContext<UiStateModel>) {
+    const favs = localStorage.getItem('fav-projects');
+
+    if (favs) {
+      const list = favs.split(',');
+      ctx.patchState({ favProjects: list });
+    } else {
+      ctx.patchState({ favProjects: [] });
+    }
   }
 
   @Action(UiSetFavorites)
   public setFavorites(
     ctx: StateContext<UiStateModel>,
     { payload }: UiSetFavorites) {
+    //
+    // Leverage 'set' to prevent duplicate entries when existing projects
+    // are added.
+    //
+    const favSet = new Set(ctx.getState().favProjects);
+
+    payload.projects.forEach((proj) => {
+      favSet.add(proj);
+    });
+
+    const newFavs = Array.from(favSet);
+
+    localStorage.setItem('fav-projects', newFavs.join(','));
+
+    ctx.patchState({ favProjects: newFavs });
   }
 
   @Action(UiRemoveFavorite)
   public removeFavorites(
     ctx: StateContext<UiStateModel>,
     { payload }: UiRemoveFavorite) {
+    const favList = ctx.getState().favProjects;
+
+    const newFavs = favList.filter((arg) => arg !== payload.projectId);
+
+    localStorage.setItem('fav-projects', newFavs.join(','));
+
+    ctx.patchState({ favProjects: newFavs });
   }
 }
