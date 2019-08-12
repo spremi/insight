@@ -7,7 +7,9 @@
 //
 
 import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { tap } from 'rxjs/operators';
 import { Project, ProjectComponent, ProjectVersion } from 'src/app/models/project';
+import { ProjectDataService } from 'src/app/services/project/project-data.service';
 import {
   ProjectDummy, ProjectFetchComponents, ProjectFetchComponentsFailed,
   ProjectFetchInfo, ProjectFetchInfoFailed, ProjectFetchList,
@@ -38,6 +40,8 @@ export interface ProjectStateModel {
   },
 })
 export class ProjectState {
+
+  constructor(private projDataSvc: ProjectDataService) { }
 
   @Selector()
   public static getState(state: ProjectStateModel) {
@@ -70,6 +74,9 @@ export class ProjectState {
 
   @Action(ProjectFetchList)
   public fetchList(ctx: StateContext<ProjectStateModel>) {
+    return this.projDataSvc.getProjects().pipe(tap((data) => {
+      ctx.patchState({ list: data });
+    }));
   }
 
   @Action(ProjectFetchListFailed)
