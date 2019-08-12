@@ -11,6 +11,8 @@ import { tap } from 'rxjs/operators';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserDataService } from 'src/app/services/user/user-data.service';
+import { ProjectFetchList } from '../project/project.actions';
+import { UiFetchFavorites } from '../ui/ui.actions';
 import {
   UserFetchData, UserFetchDataFailed, UserLogin,
   UserLoginFailed, UserLogout, UserReset
@@ -64,8 +66,11 @@ export class UserState {
     return this.authSvc.login(payload.id, payload.pass).pipe(tap((result) => {
       ctx.patchState({ token: result });
 
-      // Dispatch action to fetch user details.
-      ctx.dispatch(new UserFetchData({ id: payload.id }));
+      ctx.dispatch([
+        new UserFetchData({ id: payload.id }),      // User details
+        new ProjectFetchList(),                     // Project list
+        new UiFetchFavorites(),                     // Favorite projects
+      ]);
     }));
   }
 
