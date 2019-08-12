@@ -10,8 +10,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxsModule } from '@ngxs/store';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { ProjSelectPipe } from 'src/app/pipes/proj-select.pipe';
+import { AppState } from 'src/app/store';
 import { ProjectListComponent } from './project-list.component';
 
 describe('ProjectListComponent', () => {
@@ -24,6 +26,7 @@ describe('ProjectListComponent', () => {
         NoopAnimationsModule,
         MaterialModule,
         FormsModule,
+        NgxsModule.forRoot(AppState),
       ],
       declarations: [
         ProjectListComponent,
