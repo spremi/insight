@@ -3,7 +3,7 @@
 </ng-container>
 
 <ng-template #selectProjects>
-  <sp-project-list></sp-project-list>
+  <sp-project-list [projects]="projects$|async"></sp-project-list>
 </ng-template>
 
 <ng-template #showLogin>

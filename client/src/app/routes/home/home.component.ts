@@ -9,7 +9,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { UserState } from 'src/app/store';
+import { Project } from 'src/app/models/project';
+import { ProjectState, UserState } from 'src/app/store';
 
 @Component({
   selector: 'sp-home',
@@ -20,6 +21,9 @@ export class HomeComponent implements OnInit {
 
   @Select(UserState.isAuthenticated)
   auth$: Observable<boolean>;
+
+  @Select(ProjectState.getList)
+  projects$: Observable<Project[]>;
 
   constructor(private store: Store) { }
 
