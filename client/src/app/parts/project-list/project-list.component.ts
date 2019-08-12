@@ -7,7 +7,9 @@
 //
 
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
 import { Project } from 'src/app/models/project';
+import { UiSetFavorites } from 'src/app/store';
 
 @Component({
   selector: 'sp-project-list',
@@ -33,7 +35,7 @@ export class ProjectListComponent implements OnInit {
    */
   selected = 0;
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit() {
     if (this.projects) {
@@ -64,7 +66,6 @@ export class ProjectListComponent implements OnInit {
       }
     });
 
-    console.log('Dispatch action');
-    console.log(selection);
+    this.store.dispatch(new UiSetFavorites({ projects: selection }));
   }
 }
