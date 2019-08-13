@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ConfigService } from './services/config/config.service';
 
 @Component({
   selector: 'sp-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass'],
 })
 export class AppComponent {
-  title = 'insight';
+  ready = false;
+
+  constructor(private configSvc: ConfigService) {
+    this.configSvc.load().subscribe((flag) => {
+      this.ready = flag;
+    });
+  }
 }
