@@ -7,6 +7,8 @@
 //
 
 import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { Project } from 'src/app/models/project';
+import { ProjectState } from '../project/project.state';
 import {
   UiFetchFavorites, UiRemoveFavorite, UiReset, UiSetFavorites,
   UiSetIssue, UiSetProject, UiSetWaiting
@@ -49,9 +51,13 @@ export class UiState {
     return state.waiting;
   }
 
-  @Selector()
-  public static getFavProjects(state: UiStateModel): string[] {
-    return state.favProjects;
+  @Selector([ProjectState.getList])
+  public static getFavProjects(state: UiStateModel, projects: Project[]): Project[] {
+    const favProjects = state.favProjects;
+
+    return projects.filter((proj) => {
+      return favProjects.some((fav) => proj.id === fav);
+    });
   }
 
   @Selector()
