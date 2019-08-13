@@ -3,6 +3,7 @@
 </ng-container>
 
 <ng-template #selectProjects>
+  <sp-fav-projects [projects]="favProjects$|async"></sp-fav-projects>
   <sp-project-list [projects]="projects$|async"></sp-project-list>
 </ng-template>
 

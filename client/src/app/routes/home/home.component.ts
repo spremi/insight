@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Project } from 'src/app/models/project';
-import { ProjectState, UserState } from 'src/app/store';
+import { ProjectState, UiState, UserState } from 'src/app/store';
 
 @Component({
   selector: 'sp-home',
@@ -24,6 +24,9 @@ export class HomeComponent implements OnInit {
 
   @Select(ProjectState.getList)
   projects$: Observable<Project[]>;
+
+  @Select(UiState.getFavProjects)
+  favProjects$: Observable<Project[]>;
 
   constructor(private store: Store) { }
 

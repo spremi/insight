@@ -28,6 +28,14 @@ class MockProjectListComponent {
   @Input() projects: Project[];
 }
 
+@Component({
+  selector: 'sp-fav-projects',
+  template: '<span>Mock Fav Projects</span>',
+})
+class MockFavProjectsComponent {
+  @Input() projects: Project[];
+}
+
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
@@ -41,6 +49,7 @@ describe('HomeComponent', () => {
         HomeComponent,
         MockLoginComponent,
         MockProjectListComponent,
+        MockFavProjectsComponent,
       ],
     })
       .compileComponents();
