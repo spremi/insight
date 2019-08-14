@@ -7,8 +7,9 @@
 //
 
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { tap } from 'rxjs/operators';
-import { AuthSession } from 'src/app/models/remote';
+import { EMPTY } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { AuthResult, AuthSession } from 'src/app/models/remote';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserDataService } from 'src/app/services/user/user-data.service';
@@ -68,15 +69,30 @@ export class UserState {
 
   @Action(UserLogin)
   public login(ctx: StateContext<UserStateModel>, { payload }: UserLogin) {
-    return this.authSvc.login(payload.id, payload.pass).pipe(tap((result) => {
-      ctx.patchState({ token: result });
+    return this.authSvc.login(payload.id, payload.pass).pipe(
+      tap((result: AuthResult) => {
+        if (result.token) {
+          ctx.patchState({ token: result.token });
+        } else {
+          if (result.session) {
+            ctx.patchState({ session: result.session });
+          } else {
+            ctx.dispatch(new UserLoginFailed());
+            return EMPTY;
+          }
+        }
 
-      ctx.dispatch([
-        new UserFetchData({ id: payload.id }),      // User details
-        new ProjectFetchList(),                     // Project list
-        new UiFetchFavorites(),                     // Favorite projects
-      ]);
-    }));
+        ctx.dispatch([
+          new UserFetchData({ id: payload.id }),      // User details
+          new ProjectFetchList(),                     // Project list
+          new UiFetchFavorites(),                     // Favorite projects
+        ]);
+      }),
+      catchError(() => {
+        ctx.dispatch(new UserLoginFailed());
+        return EMPTY;
+      })
+    );
   }
 
   @Action(UserLoginFailed)

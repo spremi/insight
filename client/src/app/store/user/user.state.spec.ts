@@ -6,6 +6,7 @@
 // Available under terms of the BSD-3-Clause license.
 //
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
 import { UserDummy } from './user.actions';
@@ -15,7 +16,10 @@ describe('User store', () => {
   let store: Store;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NgxsModule.forRoot([UserState])],
+      imports: [
+        HttpClientTestingModule,
+        NgxsModule.forRoot([UserState]),
+      ],
     }).compileComponents();
     store = TestBed.get(Store);
   }));

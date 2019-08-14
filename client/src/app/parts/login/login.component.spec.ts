@@ -8,6 +8,7 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxsModule } from '@ngxs/store';
@@ -26,6 +27,7 @@ describe('LoginComponent', () => {
         MaterialModule,
         FormsModule,
         ReactiveFormsModule,
+        HttpClientTestingModule,
         NgxsModule.forRoot(AppState),
       ],
       declarations: [LoginComponent],
