@@ -8,6 +8,7 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxsModule } from '@ngxs/store';
@@ -26,6 +27,7 @@ describe('ProjectListComponent', () => {
         NoopAnimationsModule,
         MaterialModule,
         FormsModule,
+        HttpClientTestingModule,
         NgxsModule.forRoot(AppState),
       ],
       declarations: [

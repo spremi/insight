@@ -8,6 +8,7 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Component, Input } from '@angular/core';
 import { NgxsModule } from '@ngxs/store';
 import { Project } from 'src/app/models/project';
@@ -43,6 +44,7 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        HttpClientTestingModule,
         NgxsModule.forRoot(AppState),
       ],
       declarations: [

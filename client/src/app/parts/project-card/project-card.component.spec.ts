@@ -8,6 +8,7 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgxsModule } from '@ngxs/store';
@@ -25,6 +26,7 @@ describe('ProjectCardComponent', () => {
         NoopAnimationsModule,
         MaterialModule,
         RouterModule,
+        HttpClientTestingModule,
         NgxsModule.forRoot(AppState),
       ],
       declarations: [ProjectCardComponent],
