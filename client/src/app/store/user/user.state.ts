@@ -8,6 +8,7 @@
 
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
+import { AuthSession } from 'src/app/models/remote';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserDataService } from 'src/app/services/user/user-data.service';
@@ -21,6 +22,7 @@ import {
 export interface UserStateModel {
   user: User;
   token: string;
+  session: AuthSession;
 }
 
 @State<UserStateModel>({
@@ -28,6 +30,7 @@ export interface UserStateModel {
   defaults: {
     user: null,
     token: null,
+    session: null,
   },
 })
 export class UserState {
@@ -50,8 +53,13 @@ export class UserState {
   }
 
   @Selector()
+  public static getSession(state: UserStateModel): AuthSession {
+    return state.session;
+  }
+
+  @Selector()
   public static isAuthenticated(state: UserStateModel): boolean {
-    return !!state.token;
+    return !!state.token || !!state.session;
   }
 
   @Action(UserDummy)
@@ -78,7 +86,7 @@ export class UserState {
   @Action(UserLogout)
   public logout(ctx: StateContext<UserStateModel>) {
     return this.authSvc.logout().pipe(tap(() => {
-      ctx.setState({ token: null, user: null });
+      ctx.setState({ user: null, token: null, session: null });
     }));
   }
 

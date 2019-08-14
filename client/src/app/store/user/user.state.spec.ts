@@ -24,6 +24,7 @@ describe('User store', () => {
     const expected: UserStateModel = {
       user: null,
       token: null,
+      session: null,
     };
     store.dispatch(new UserDummy());
     const actual = store.selectSnapshot(UserState.getState);
