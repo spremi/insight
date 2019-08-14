@@ -7,7 +7,9 @@
 //
 
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
 import { Project } from 'src/app/models/project';
+import { UiRemoveFavorite } from 'src/app/store/ui/ui.actions';
 
 @Component({
   selector: 'sp-project-card',
@@ -19,8 +21,12 @@ export class ProjectCardComponent implements OnInit {
   @Input()
   data: Project;
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit() {
+  }
+
+  unFavorite(id: string) {
+    this.store.dispatch(new UiRemoveFavorite({ projectId: id }));
   }
 }
