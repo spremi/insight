@@ -9,13 +9,17 @@
 import falcon
 
 from generic import config
+from generic import cors
 from generic import log
 
 from routes.fake import Fake
 from routes.jira import Jira
 from routes.version import Version
 
-app = application = falcon.API()
+if config.CORS_ALLOW:
+    app = application = falcon.API(middleware=[cors.CorsMiddleware()])
+else:
+    app = application = falcon.API()
 
 logger = log.setup('DEBUG')
 
