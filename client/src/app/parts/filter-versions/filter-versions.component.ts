@@ -8,9 +8,10 @@
 
 import { Component, Input, OnInit } from '@angular/core';
 import { MatListOption } from '@angular/material/list';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ProjectVersion } from 'src/app/models/project';
+import { FilterName, FilterSet } from 'src/app/store/filter/filter.actions';
 import { ProjectState } from 'src/app/store/project/project.state';
 
 @Component({
@@ -27,12 +28,31 @@ export class FilterVersionsComponent implements OnInit {
 
   @Select(ProjectState.getVersions) versions$: Observable<ProjectVersion[]>;
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit() {
   }
 
   toggleVersion(selected: MatListOption[]) {
-    console.log('TODO: Dispatch action');
+    const versions = selected.map((s) => s.value);
+
+    switch (this.mode) {
+      case this.MODE_AFFECTED:
+        this.store.dispatch(new FilterSet({
+          filter: FilterName.AffectedVersions,
+          items: versions,
+        }));
+        break;
+
+      case this.MODE_FIXED:
+        this.store.dispatch(new FilterSet({
+          filter: FilterName.FixVersions,
+          items: versions,
+        }));
+        break;
+
+      default:
+        console.log('Error: filter-versions: Unknown mode');
+    }
   }
 }
