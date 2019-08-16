@@ -8,8 +8,10 @@
 
 import { Component, Input, OnInit } from '@angular/core';
 import { MatListOption } from '@angular/material/list';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { ProjectVersion } from 'src/app/models/project';
-import { ProjectDataService } from 'src/app/services/project/project-data.service';
+import { ProjectState } from 'src/app/store/project/project.state';
 
 @Component({
   selector: 'sp-filter-versions',
@@ -20,25 +22,14 @@ export class FilterVersionsComponent implements OnInit {
   @Input()
   title: string;
 
-  @Input()
-  projId: string;
+  @Select(ProjectState.getVersions) versions$: Observable<ProjectVersion[]>;
 
-  /**
-   * List of versions.
-   */
-  list: ProjectVersion[];
-
-  constructor(private projDataSvc: ProjectDataService) { }
+  constructor() { }
 
   ngOnInit() {
-    if (this.projId) {
-      this.projDataSvc.getVersions(this.projId).subscribe((result) => {
-        this.list = result;
-      });
-    }
   }
 
-  applyFilter(selected: MatListOption[]) {
+  toggleVersion(selected: MatListOption[]) {
     console.log('TODO: Dispatch action');
   }
 }
