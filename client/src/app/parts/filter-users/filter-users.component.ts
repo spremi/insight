@@ -8,9 +8,10 @@
 
 import { Component, OnInit } from '@angular/core';
 import { MatListOption } from '@angular/material/list';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user';
+import { FilterName, FilterSet } from 'src/app/store/filter/filter.actions';
 import { ProjectState } from 'src/app/store/project/project.state';
 
 @Component({
@@ -21,12 +22,17 @@ import { ProjectState } from 'src/app/store/project/project.state';
 export class FilterUsersComponent implements OnInit {
   @Select(ProjectState.getUsers) users$: Observable<User[]>;
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit() {
   }
 
   applyFilter(selected: MatListOption[]) {
-    console.log('TODO: Dispatch action');
+    const users = selected.map((s) => s.value);
+
+    this.store.dispatch(new FilterSet({
+      filter: FilterName.Users,
+      items: users,
+    }));
   }
 }
