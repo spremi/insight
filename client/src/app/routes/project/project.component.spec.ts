@@ -10,7 +10,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Component } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxsModule } from '@ngxs/store';
 import { MaterialModule } from 'src/app/modules/material/material.module';
+import { ProjectState } from 'src/app/store';
 import { ProjectComponent } from './project.component';
 
 @Component({
@@ -46,6 +48,7 @@ describe('ProjectComponent', () => {
       imports: [
         NoopAnimationsModule,
         MaterialModule,
+        NgxsModule.forRoot([ProjectState]),
       ],
       declarations: [
         ProjectComponent,
