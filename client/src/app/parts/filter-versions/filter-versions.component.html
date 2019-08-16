@@ -1,4 +1,14 @@
-<h3 class="mat-h3">{{title}}</h3>
+<ng-container
+  *ngIf="mode === 'fixed'; then hdrFixed; else hdrAffected">
+</ng-container>
+
+<ng-template #hdrFixed>
+  <h3 class="mat-h3">Fixed version(s)</h3>
+</ng-template>
+
+<ng-template #hdrAffected>
+  <h3 class="mat-h3">Affected version(s)</h3>
+</ng-template>
 
 <mat-selection-list #filterVersions
   *ngIf="versions$|async as versions"

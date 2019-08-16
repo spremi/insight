@@ -19,8 +19,11 @@ import { ProjectState } from 'src/app/store/project/project.state';
   styleUrls: ['./filter-versions.component.sass'],
 })
 export class FilterVersionsComponent implements OnInit {
+  private readonly MODE_AFFECTED = 'affected';
+  private readonly MODE_FIXED = 'fixed';
+
   @Input()
-  title: string;
+  mode: string;
 
   @Select(ProjectState.getVersions) versions$: Observable<ProjectVersion[]>;
 
