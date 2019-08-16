@@ -102,6 +102,10 @@ export class ProjectState {
   public fetchData(
     ctx: StateContext<ProjectStateModel>,
     { payload }: ProjectFetchData) {
+    return this.projDataSvc.getProject(payload.projectId).pipe(
+      tap((data: Project) => {
+        ctx.patchState({ selected: { ...data } });
+      }));
   }
 
   @Action(ProjectFetchDataFailed)
@@ -112,6 +116,10 @@ export class ProjectState {
   public fetchComponents(
     ctx: StateContext<ProjectStateModel>,
     { payload }: ProjectFetchComponents) {
+    return this.projDataSvc.getComponents(payload.projectId).pipe(
+      tap((data: ProjectComponent[]) => {
+        ctx.patchState({ components: [...data] });
+      }));
   }
 
   @Action(ProjectFetchComponentsFailed)
@@ -122,6 +130,10 @@ export class ProjectState {
   public fetchVersions(
     ctx: StateContext<ProjectStateModel>,
     { payload }: ProjectFetchVersions) {
+    return this.projDataSvc.getVersions(payload.projectId).pipe(
+      tap((data: ProjectVersion[]) => {
+        ctx.patchState({ versions: [...data] });
+      }));
   }
 
   @Action(ProjectFetchVersionsFailed)
