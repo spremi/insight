@@ -1,8 +1,10 @@
 <h3 class="mat-h3">COMPONENTS</h3>
 
 <mat-selection-list #filterComponents dense
+  *ngIf="comps$|async as components"
   (selectionChange)="applyFilter(filterComponents.selectedOptions.selected)">
-  <mat-list-option *ngFor="let item of list">
-    {{item.name}}
+  <mat-list-option *ngFor="let comp of components"
+    [value]="comp.id">
+    {{comp.name}}
   </mat-list-option>
 </mat-selection-list>
