@@ -1,8 +1,10 @@
 <h3 class="mat-h3">PRIORITY</h3>
 
 <mat-selection-list #filterPriority dense
+  *ngIf="priorities$|async as priorities"
   (selectionChange)="applyFilter(filterPriority.selectedOptions.selected)">
-  <mat-list-option *ngFor="let item of list">
-    {{item.name}}
+  <mat-list-option *ngFor="let priority of priorities"
+    [value]="priority.id">
+    {{priority.name}}
   </mat-list-option>
 </mat-selection-list>
