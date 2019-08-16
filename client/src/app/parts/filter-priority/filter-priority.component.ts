@@ -8,9 +8,10 @@
 
 import { Component, OnInit } from '@angular/core';
 import { MatListOption } from '@angular/material/list';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { IssueElement } from 'src/app/models/issue';
+import { FilterName, FilterSet } from 'src/app/store';
 import { IssueState } from 'src/app/store/issue/issue.state';
 
 @Component({
@@ -22,12 +23,17 @@ export class FilterPriorityComponent implements OnInit {
 
   @Select(IssueState.getPriorities) priorities$: Observable<IssueElement[]>;
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit() {
   }
 
   applyFilter(selected: MatListOption[]) {
-    console.log('TODO: Dispatch action');
+    const priorities = selected.map((s) => s.value);
+
+    this.store.dispatch(new FilterSet({
+      filter: FilterName.Priorities,
+      items: priorities,
+    }));
   }
 }
