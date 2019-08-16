@@ -1,8 +1,10 @@
 <h3 class="mat-h3">TYPES</h3>
 
 <mat-selection-list #filterTypes dense
+  *ngIf="types$|async as types"
   (selectionChange)="applyFilter(filterTypes.selectedOptions.selected)">
-  <mat-list-option *ngFor="let item of list">
-    {{item.name}}
+  <mat-list-option *ngFor="let typ of types"
+    [value]="typ.id">
+    {{typ.name}}
   </mat-list-option>
 </mat-selection-list>

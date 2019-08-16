@@ -8,8 +8,10 @@
 
 import { Component, OnInit } from '@angular/core';
 import { MatListOption } from '@angular/material/list';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { IssueElement } from 'src/app/models/issue';
-import { IssueDataService } from 'src/app/services/issue/issue-data.service';
+import { IssueState } from 'src/app/store';
 
 @Component({
   selector: 'sp-filter-type',
@@ -17,17 +19,12 @@ import { IssueDataService } from 'src/app/services/issue/issue-data.service';
   styleUrls: ['./filter-type.component.sass'],
 })
 export class FilterTypeComponent implements OnInit {
-  /**
-   * List of issue types.
-   */
-  list: IssueElement[];
 
-  constructor(private issueDataSvc: IssueDataService) { }
+  @Select(IssueState.getTypes) types$: Observable<IssueElement[]>;
+
+  constructor() { }
 
   ngOnInit() {
-    this.issueDataSvc.getTypes().subscribe((result) => {
-      this.list = result;
-    });
   }
 
   applyFilter(selected: MatListOption[]) {
