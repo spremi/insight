@@ -8,9 +8,10 @@
 
 import { Component, Input, OnInit } from '@angular/core';
 import { MatListOption } from '@angular/material/list';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ProjectComponent } from 'src/app/models/project';
+import { FilterName, FilterSet } from 'src/app/store/filter/filter.actions';
 import { ProjectState } from 'src/app/store/project/project.state';
 
 @Component({
@@ -27,12 +28,14 @@ export class FilterComponentsComponent implements OnInit {
    */
   list: ProjectComponent[];
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit() {
   }
 
   applyFilter(selected: MatListOption[]) {
-    console.log('TODO: Dispatch action');
+    const compList = selected.map((s) => s.value);
+
+    this.store.dispatch(new FilterSet({ filter: FilterName.Components, items: compList }));
   }
 }
