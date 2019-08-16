@@ -8,8 +8,10 @@
 
 import { Component, OnInit } from '@angular/core';
 import { MatListOption } from '@angular/material/list';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user';
-import { UserDataService } from 'src/app/services/user/user-data.service';
+import { ProjectState } from 'src/app/store/project/project.state';
 
 @Component({
   selector: 'sp-filter-users',
@@ -17,17 +19,11 @@ import { UserDataService } from 'src/app/services/user/user-data.service';
   styleUrls: ['./filter-users.component.sass'],
 })
 export class FilterUsersComponent implements OnInit {
-  /**
-   * List of users.
-   */
-  list: User[];
+  @Select(ProjectState.getUsers) users$: Observable<User[]>;
 
-  constructor(private userDataSvc: UserDataService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.userDataSvc.getUsers('dummy-project').subscribe((result) => {
-      this.list = result;
-    });
   }
 
   applyFilter(selected: MatListOption[]) {
