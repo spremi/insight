@@ -70,3 +70,67 @@ export interface Project {
   /** Project category. */
   category: ProjectCategory;
 }
+
+/**
+ * Describes generic summary element e.g. status, priority, ...
+ */
+export interface SummaryData {
+  /** Name of attribute. */
+  name: string;
+
+  /** Value of attribute. */
+  value: number;
+}
+
+/**
+ * Describes summary of issues - by version - in a project.
+ */
+export interface IssuesByVersion {
+  version: {
+    id: string;
+    name: string;
+  };
+  data: {
+    /** Total number of issues. */
+    count: number;
+
+    /** Number of issues that affect the version. */
+    affecting: number;
+
+    /** Number of issues fixed in version. */
+    fixed: number;
+
+    /** Number of issues unresolved. */
+    unresolved: number;
+  };
+}
+
+/**
+ * Describes summary of issues - by component - in a project.
+ */
+export interface IssuesByComponent {
+  component: {
+    id: string;
+    name: string;
+  };
+  data: {
+    /** Number of issues. */
+    count: number;
+  };
+}
+
+/**
+ * Describes summary of issues - by user - in a project.
+ */
+export interface IssuesByUser {
+  user: {
+    id: string;
+    name: string;
+  };
+
+  /** Array of issues - by priority. */
+  priority: SummaryData[];
+
+  /** Array of issues - by status. */
+  status: SummaryData[];
+}
