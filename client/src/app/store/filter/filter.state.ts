@@ -7,7 +7,7 @@
 //
 
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { FilterReset, FilterSet } from './filter.actions';
+import { FilterName, FilterReset, FilterSet } from './filter.actions';
 
 export interface FilterStateModel {
   components: string[];
@@ -89,5 +89,40 @@ export class FilterState {
 
   @Action(FilterSet)
   public add(ctx: StateContext<FilterStateModel>, { payload }: FilterSet) {
+    switch (payload.filter) {
+      case FilterName.Components:
+        ctx.patchState({ components: [...payload.items] });
+        break;
+
+      case FilterName.Users:
+        ctx.patchState({ users: [...payload.items] });
+        break;
+
+      case FilterName.Types:
+        ctx.patchState({ types: [...payload.items] });
+        break;
+
+      case FilterName.Statuses:
+        ctx.patchState({ statuses: [...payload.items] });
+        break;
+
+      case FilterName.Priorities:
+        ctx.patchState({ priorities: [...payload.items] });
+        break;
+
+      case FilterName.Resolutions:
+        ctx.patchState({ resolutions: [...payload.items] });
+        break;
+
+      case FilterName.FixVersions:
+        ctx.patchState({ fixVersions: [...payload.items] });
+        break;
+
+      case FilterName.AffectedVersions:
+        ctx.patchState({ affectedVersions: [...payload.items] });
+        break;
+
+      default:
+    }
   }
 }
