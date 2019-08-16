@@ -11,6 +11,7 @@ import { tap } from 'rxjs/operators';
 import { Project, ProjectComponent, ProjectVersion } from 'src/app/models/project';
 import { User } from 'src/app/models/user';
 import { ProjectDataService } from 'src/app/services/project/project-data.service';
+import { UserDataService } from 'src/app/services/user/user-data.service';
 import {
   ProjectFetchComponents, ProjectFetchComponentsFailed, ProjectFetchData,
   ProjectFetchDataFailed, ProjectFetchList,
@@ -49,7 +50,10 @@ export const initProjectState: ProjectStateModel = {
 })
 export class ProjectState {
 
-  constructor(private projDataSvc: ProjectDataService) { }
+  constructor(
+    private projDataSvc: ProjectDataService,
+    private userDataSvc: UserDataService
+  ) { }
 
   @Selector()
   public static getState(state: ProjectStateModel) {
@@ -144,6 +148,10 @@ export class ProjectState {
   public fetchUsers(
     ctx: StateContext<ProjectStateModel>,
     { payload }: ProjectFetchUsers) {
+    return this.userDataSvc.getUsers(payload.projectId).pipe(
+      tap((data: User[]) => {
+        ctx.patchState({ users: [...data] });
+      }));
   }
 
   @Action(ProjectFetchUsersFailed)
