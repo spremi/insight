@@ -8,8 +8,10 @@
 
 import { Component, OnInit } from '@angular/core';
 import { MatListOption } from '@angular/material/list';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { IssueElement } from 'src/app/models/issue';
-import { IssueDataService } from 'src/app/services/issue/issue-data.service';
+import { IssueState } from 'src/app/store/issue/issue.state';
 
 @Component({
   selector: 'sp-filter-resolution',
@@ -17,17 +19,12 @@ import { IssueDataService } from 'src/app/services/issue/issue-data.service';
   styleUrls: ['./filter-resolution.component.sass'],
 })
 export class FilterResolutionComponent implements OnInit {
-  /**
-   * List of issue resoultions.
-   */
-  list: IssueElement[];
 
-  constructor(private issueDataSvc: IssueDataService) { }
+  @Select(IssueState.getResolutions) resolutions$: Observable<IssueElement[]>;
+
+  constructor() { }
 
   ngOnInit() {
-    this.issueDataSvc.getResolutions().subscribe((result) => {
-      this.list = result;
-    });
   }
 
   applyFilter(selected: MatListOption[]) {
