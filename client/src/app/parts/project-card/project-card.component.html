@@ -16,6 +16,7 @@
     <button mat-button color="primary"
       [routerLink]="['/project', data.id]"
       aria-label="View data details"
+      (click)="fetchProject(data.id)"
     >VIEW</button>
   </mat-card-actions>
 </mat-card>
