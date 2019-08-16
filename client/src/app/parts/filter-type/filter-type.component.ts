@@ -8,10 +8,10 @@
 
 import { Component, OnInit } from '@angular/core';
 import { MatListOption } from '@angular/material/list';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { IssueElement } from 'src/app/models/issue';
-import { IssueState } from 'src/app/store';
+import { FilterName, FilterSet, IssueState } from 'src/app/store';
 
 @Component({
   selector: 'sp-filter-type',
@@ -22,12 +22,17 @@ export class FilterTypeComponent implements OnInit {
 
   @Select(IssueState.getTypes) types$: Observable<IssueElement[]>;
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit() {
   }
 
   applyFilter(selected: MatListOption[]) {
-    console.log('TODO: Dispatch action');
+    const types = selected.map((s) => s.value);
+
+    this.store.dispatch(new FilterSet({
+      filter: FilterName.Types,
+      items: types,
+    }));
   }
 }

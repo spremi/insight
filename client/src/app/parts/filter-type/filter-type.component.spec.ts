@@ -8,8 +8,11 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxsModule } from '@ngxs/store';
 import { MaterialModule } from 'src/app/modules/material/material.module';
+import { AppState } from 'src/app/store';
 import { FilterTypeComponent } from './filter-type.component';
 
 describe('FilterTypeComponent', () => {
@@ -21,6 +24,8 @@ describe('FilterTypeComponent', () => {
       imports: [
         NoopAnimationsModule,
         MaterialModule,
+        HttpClientTestingModule,
+        NgxsModule.forRoot(AppState),
       ],
       declarations: [FilterTypeComponent],
     })
