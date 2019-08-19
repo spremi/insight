@@ -8,12 +8,20 @@
 
 import { inject, TestBed } from '@angular/core/testing';
 
+import { Router } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+
+const MockRouter = {
+  navigate: jasmine.createSpy('navigate'),
+};
 
 describe('AuthGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthGuard],
+      providers: [
+        { provide: Router, useValue: MockRouter },
+        AuthGuard,
+      ],
     });
   });
 
