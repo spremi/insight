@@ -4,28 +4,40 @@
   <button mat-button>SWITCH</button>
 </mat-toolbar>
 
-<ng-container *ngIf="proj$|async as project">
+<div *ngIf="proj$|async as project" class="content">
   <ng-container
     *ngIf="versionsSelected; then viewSummary; else viewVersions">
   </ng-container>
 
   <ng-template #viewSummary>
-    <section>
-      <sp-project-summary></sp-project-summary>
-      <sp-filter-components></sp-filter-components>
-      <sp-filter-users></sp-filter-users>
-    </section>
+    <sp-project-summary></sp-project-summary>
+    <sp-filter-components></sp-filter-components>
+    <sp-filter-users></sp-filter-users>
   </ng-template>
 
   <ng-template #viewVersions>
-    <section>
-      <sp-filter-versions mode="affected"></sp-filter-versions>
-      <sp-filter-versions mode="fixed"></sp-filter-versions>
-
-      <!-- TODO: Enable only if there is a selection -->
-      <button mat-button
-        class="select"
-        (click)="selectVersions()">SELECT</button>
+    <section class="tiles">
+      <ng-container *ngFor="let item of versionTiles">
+        <sp-tile [data]="item"></sp-tile>
+      </ng-container>
+    </section>
+    <section class="versions">
+      <div class="select">
+        <!-- TODO: Enable only if there is a selection -->
+        <button mat-button
+          class="select"
+          (click)="selectVersions()">SELECT</button>
+      </div>
+      <div class="options">
+        <sp-filter-versions #affected
+          title="Affected versions"
+          mode="affected"
+        ></sp-filter-versions>
+        <sp-filter-versions #fixed
+          title="Fixed versions"
+          mode="fixed"
+        ></sp-filter-versions>
+      </div>
     </section>
   </ng-template>
-</ng-container>
+</div>

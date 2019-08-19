@@ -8,12 +8,20 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxsModule } from '@ngxs/store';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { ProjectState } from 'src/app/store';
 import { ProjectComponent } from './project.component';
+
+@Component({
+  selector: 'sp-tile',
+  template: '<span>Mock Tile</span>',
+})
+class MockTileComponent {
+  @Input() data: any;
+}
 
 @Component({
   selector: 'sp-project-summary',
@@ -52,6 +60,7 @@ describe('ProjectComponent', () => {
       ],
       declarations: [
         ProjectComponent,
+        MockTileComponent,
         MockProjectSummaryComponent,
         MockFilterComponentsComponent,
         MockFilterUsersComponent,
