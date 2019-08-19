@@ -8,7 +8,9 @@
 
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
-import { Project, ProjectVersion } from 'src/app/models/project';
+import {
+  IssuesByComponent, IssuesByUser, IssuesByVersion, Project, ProjectVersion
+} from 'src/app/models/project';
 import { ProjectComponent } from 'src/app/models/project';
 
 @Injectable({
@@ -119,6 +121,152 @@ export class ProjectDataService {
     },
   ];
 
+  /**
+   * Dummy list of issues (by version).
+   */
+  versionIssues: IssuesByVersion[] = [
+    {
+      version: {
+        id: 'ver001',
+        name: 'Version 1',
+      },
+      data: {
+        count: 100,
+        affecting: 25,
+        fixed: 25,
+        unresolved: 50,
+      },
+    },
+    {
+      version: {
+        id: 'ver002',
+        name: 'Version 2',
+      },
+      data: {
+        count: 105,
+        affecting: 25,
+        fixed: 25,
+        unresolved: 55,
+      },
+    },
+    {
+      version: {
+        id: 'ver003',
+        name: 'Version 3',
+      },
+      data: {
+        count: 110,
+        affecting: 30,
+        fixed: 25,
+        unresolved: 55,
+      },
+    },
+    {
+      version: {
+        id: 'ver004',
+        name: 'Version 4',
+      },
+      data: {
+        count: 115,
+        affecting: 30,
+        fixed: 30,
+        unresolved: 55,
+      },
+    },
+  ];
+
+  /**
+   * Dummy list of issues (by component).
+   */
+  compIssues: IssuesByComponent[] = [
+    {
+      component: {
+        id: 'comp01',
+        name: 'Component 1',
+      },
+      data: {
+        count: 10,
+      },
+    },
+    {
+      component: {
+        id: 'comp02',
+        name: 'Component 2',
+      },
+      data: {
+        count: 12,
+      },
+    },
+    {
+      component: {
+        id: 'comp03',
+        name: 'Component 3',
+      },
+      data: {
+        count: 14,
+      },
+    },
+    {
+      component: {
+        id: 'comp04',
+        name: 'Component 4',
+      },
+      data: {
+        count: 16,
+      },
+    },
+    {
+      component: {
+        id: 'comp05',
+        name: 'Component 5',
+      },
+      data: {
+        count: 18,
+      },
+    },
+  ];
+
+
+  /**
+   * Dummy list of issues (by user)
+   */
+  userIssues: IssuesByUser[] = [
+    {
+      user: {
+        id: 'user01',
+        name: 'User 1',
+      },
+      priority: [
+        {
+          name: 'P0',
+          value: 5,
+        },
+        {
+          name: 'P1',
+          value: 6,
+        },
+        {
+          name: 'P2',
+          value: 7,
+        },
+      ],
+      status: [
+        {
+          name: 'Status 0',
+          value: 3,
+        },
+        {
+          name: 'Status 2',
+          value: 6,
+        },
+        {
+          name: 'Status 2',
+          value: 9,
+        },
+      ],
+    },
+  ];
+
   constructor() { }
 
   /**
@@ -147,5 +295,26 @@ export class ProjectDataService {
    */
   getVersions(id: string): Observable<ProjectVersion[]> {
     return of(this.versions);
+  }
+
+  /**
+   * Fetch list of issues (by version) in the project.
+   */
+  getIssuesByVersion(projectId: string): Observable<IssuesByVersion[]> {
+    return of(this.versionIssues);
+  }
+
+  /**
+   * Fetch list of issues (by component) in the project.
+   */
+  getIssuesByComponent(projectId: string): Observable<IssuesByComponent[]> {
+    return of(this.compIssues);
+  }
+
+  /**
+   * Fetch list of issues (by user) in the project.
+   */
+  getIssuesByUser(projectId: string): Observable<IssuesByUser[]> {
+    return of(this.userIssues);
   }
 }
