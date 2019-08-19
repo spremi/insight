@@ -10,8 +10,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Project } from 'src/app/models/project';
 import {
-  ProjectFetchComponents, ProjectFetchData,
-  ProjectFetchUsers, ProjectFetchVersions
+  ProjectFetchComponents, ProjectFetchData, ProjectFetchIssuesByComponent,
+  ProjectFetchIssuesByUser, ProjectFetchIssuesByVersion, ProjectFetchUsers,
+  ProjectFetchVersions
 } from 'src/app/store';
 import { UiRemoveFavorite, UiSetProject } from 'src/app/store/ui/ui.actions';
 
@@ -37,6 +38,9 @@ export class ProjectCardComponent implements OnInit {
       new ProjectFetchVersions({ projectId: id }),
       new ProjectFetchComponents({ projectId: id }),
       new ProjectFetchUsers({ projectId: id }),
+      new ProjectFetchIssuesByVersion({ projectId: id }),
+      new ProjectFetchIssuesByComponent({ projectId: id }),
+      new ProjectFetchIssuesByUser({ projectId: id }),
     ]);
   }
 
