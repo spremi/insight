@@ -17,7 +17,10 @@ import { ProjectDataService } from 'src/app/services/project/project-data.servic
 import { UserDataService } from 'src/app/services/user/user-data.service';
 import {
   ProjectFetchComponents, ProjectFetchComponentsFailed, ProjectFetchData,
-  ProjectFetchDataFailed, ProjectFetchList,
+  ProjectFetchDataFailed, ProjectFetchIssuesByComponent,
+  ProjectFetchIssuesByComponentFailed, ProjectFetchIssuesByUser,
+  ProjectFetchIssuesByUserFailed, ProjectFetchIssuesByVersion,
+  ProjectFetchIssuesByVersFailed, ProjectFetchList,
   ProjectFetchListFailed, ProjectFetchUsers,
   ProjectFetchUsersFailed, ProjectFetchVersions,
   ProjectFetchVersionsFailed, ProjectReset
@@ -186,5 +189,47 @@ export class ProjectState {
 
   @Action(ProjectFetchUsersFailed)
   public fetchUsersFailed(ctx: StateContext<ProjectStateModel>) {
+  }
+
+  @Action(ProjectFetchIssuesByVersion)
+  public fetchIssuesByVersion(
+    ctx: StateContext<ProjectStateModel>,
+    { payload }: ProjectFetchIssuesByVersion) {
+    return this.projDataSvc.getIssuesByVersion(payload.projectId).pipe(
+      tap((data: IssuesByVersion[]) => {
+        ctx.patchState({ versionIssues: [...data] });
+      }));
+  }
+
+  @Action(ProjectFetchIssuesByVersFailed)
+  public fetchIssuesByVersFailed(ctx: StateContext<ProjectStateModel>) {
+  }
+
+  @Action(ProjectFetchIssuesByComponent)
+  public fetchIssuesByComp(
+    ctx: StateContext<ProjectStateModel>,
+    { payload }: ProjectFetchIssuesByComponent) {
+    return this.projDataSvc.getIssuesByComponent(payload.projectId).pipe(
+      tap((data: IssuesByComponent[]) => {
+        ctx.patchState({ compIssues: [...data] });
+      }));
+  }
+
+  @Action(ProjectFetchIssuesByComponentFailed)
+  public fetchIssuesByCompFailed(ctx: StateContext<ProjectStateModel>) {
+  }
+
+  @Action(ProjectFetchIssuesByUser)
+  public fetchIssuesByUser(
+    ctx: StateContext<ProjectStateModel>,
+    { payload }: ProjectFetchIssuesByUser) {
+    return this.projDataSvc.getIssuesByUser(payload.projectId).pipe(
+      tap((data: IssuesByUser[]) => {
+        ctx.patchState({ userIssues: [...data] });
+      }));
+  }
+
+  @Action(ProjectFetchIssuesByUserFailed)
+  public fetchIssuesByUserFailed(ctx: StateContext<ProjectStateModel>) {
   }
 }

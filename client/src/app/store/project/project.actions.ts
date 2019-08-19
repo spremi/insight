@@ -57,3 +57,33 @@ export class ProjectFetchUsers {
 export class ProjectFetchUsersFailed {
   public static readonly type = '[Project] Fetch users failed';
 }
+
+export class ProjectFetchIssuesByVersion {
+  public static readonly type = '[Project] Fetch issues by version';
+
+  constructor(public payload: { projectId: string }) { }
+}
+
+export class ProjectFetchIssuesByVersFailed {
+  public static readonly type = '[Project] Fetch issues by version failed';
+}
+
+export class ProjectFetchIssuesByComponent {
+  public static readonly type = '[Project] Fetch issues by component';
+
+  constructor(public payload: { projectId: string }) { }
+}
+
+export class ProjectFetchIssuesByComponentFailed {
+  public static readonly type = '[Project] Fetch issues by component failed';
+}
+
+export class ProjectFetchIssuesByUser {
+  public static readonly type = '[Project] Fetch issues by user';
+
+  constructor(public payload: { projectId: string }) { }
+}
+
+export class ProjectFetchIssuesByUserFailed {
+  public static readonly type = '[Project] Fetch issues by user failed';
+}
