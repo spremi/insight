@@ -8,7 +8,10 @@
 
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
-import { Project, ProjectComponent, ProjectVersion } from 'src/app/models/project';
+import {
+  IssuesByComponent, IssuesByUser, IssuesByVersion,
+  Project, ProjectComponent, ProjectVersion
+} from 'src/app/models/project';
 import { User } from 'src/app/models/user';
 import { ProjectDataService } from 'src/app/services/project/project-data.service';
 import { UserDataService } from 'src/app/services/user/user-data.service';
@@ -35,6 +38,15 @@ export interface ProjectStateModel {
 
   /** Users associated with the project. */
   users: User[];
+
+  /** Issues (by version) in the project. */
+  versionIssues: IssuesByVersion[];
+
+  /** Issues (by component) in the project. */
+  compIssues: IssuesByComponent[];
+
+  /** Issues (by user) in the project. */
+  userIssues: IssuesByUser[];
 }
 
 export const initProjectState: ProjectStateModel = {
@@ -43,6 +55,9 @@ export const initProjectState: ProjectStateModel = {
   components: [],
   versions: [],
   users: [],
+  versionIssues: [],
+  compIssues: [],
+  userIssues: [],
 };
 @State<ProjectStateModel>({
   name: 'project',
@@ -83,6 +98,21 @@ export class ProjectState {
   @Selector()
   public static getUsers(state: ProjectStateModel): User[] {
     return state.users;
+  }
+
+  @Selector()
+  public static getIssuesByVersion(state: ProjectStateModel): IssuesByVersion[] {
+    return state.versionIssues;
+  }
+
+  @Selector()
+  public static getIssuesByComponent(state: ProjectStateModel): IssuesByComponent[] {
+    return state.compIssues;
+  }
+
+  @Selector()
+  public static getIssuesByUser(state: ProjectStateModel): IssuesByUser[] {
+    return state.userIssues;
   }
 
   @Action(ProjectReset)
