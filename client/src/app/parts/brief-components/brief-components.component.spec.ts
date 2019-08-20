@@ -8,6 +8,11 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxsModule } from '@ngxs/store';
+import { MaterialModule } from 'src/app/modules/material/material.module';
+import { AppState } from 'src/app/store';
 import { BriefComponentsComponent } from './brief-components.component';
 
 describe('BriefComponentsComponent', () => {
@@ -16,6 +21,12 @@ describe('BriefComponentsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        NoopAnimationsModule,
+        MaterialModule,
+        HttpClientTestingModule,
+        NgxsModule.forRoot(AppState),
+      ],
       declarations: [BriefComponentsComponent],
     })
       .compileComponents();
