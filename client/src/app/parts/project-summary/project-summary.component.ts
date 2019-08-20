@@ -7,6 +7,10 @@
 //
 
 import { Component, OnInit } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { Project } from 'src/app/models/project';
+import { ProjectState } from 'src/app/store/project/project.state';
 
 @Component({
   selector: 'sp-project-summary',
@@ -15,9 +19,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectSummaryComponent implements OnInit {
 
+  @Select(ProjectState.getSelected) project$: Observable<Project>;
+
   constructor() { }
 
   ngOnInit() {
   }
-
 }

@@ -8,7 +8,22 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { Component } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 import { ProjectSummaryComponent } from './project-summary.component';
+
+@Component({
+  selector: 'sp-brief-versions',
+  template: '<span>Mock Summary Versions</span>',
+})
+class MockBriefVersionsComponent { }
+
+@Component({
+  selector: 'sp-brief-components',
+  template: '<span>Mock Summary Components</span>',
+})
+class MockBriefComponentsComponent { }
 
 describe('ProjectSummaryComponent', () => {
   let component: ProjectSummaryComponent;
@@ -16,7 +31,15 @@ describe('ProjectSummaryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ProjectSummaryComponent],
+      imports: [
+        NoopAnimationsModule,
+        MaterialModule,
+      ],
+      declarations: [
+        ProjectSummaryComponent,
+        MockBriefVersionsComponent,
+        MockBriefComponentsComponent,
+      ],
     })
       .compileComponents();
   }));

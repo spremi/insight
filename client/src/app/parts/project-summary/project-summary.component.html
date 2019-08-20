@@ -1,1 +1,4 @@
-<p>project-summary works!</p>
+<ng-container *ngIf="project$|async as project">
+  <sp-brief-versions></sp-brief-versions>
+  <sp-brief-components></sp-brief-components>
+</ng-container>
