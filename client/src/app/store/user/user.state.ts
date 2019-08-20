@@ -13,8 +13,10 @@ import { AuthResult, AuthSession } from 'src/app/models/remote';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserDataService } from 'src/app/services/user/user-data.service';
-import { ProjectFetchList } from '../project/project.actions';
-import { UiFetchFavorites } from '../ui/ui.actions';
+import { FilterReset } from '../filter/filter.actions';
+import { IssueReset } from '../issue/issue.actions';
+import { ProjectFetchList, ProjectReset } from '../project/project.actions';
+import { UiFetchFavorites, UiReset } from '../ui/ui.actions';
 import {
   UserFetchData, UserFetchDataFailed, UserLogin,
   UserLoginFailed, UserLogout, UserReset
@@ -105,7 +107,13 @@ export class UserState {
   @Action(UserLogout)
   public logout(ctx: StateContext<UserStateModel>) {
     return this.authSvc.logout().pipe(tap(() => {
-      ctx.dispatch(UserReset);
+      ctx.dispatch([
+        UserReset,
+        ProjectReset,
+        IssueReset,
+        FilterReset,
+        UiReset,
+      ]);
     }));
   }
 
