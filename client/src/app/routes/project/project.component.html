@@ -1,9 +1,3 @@
-<mat-toolbar>
-  <span>PROJECT NAME</span>
-  <span class="h-spacer"></span>
-  <button mat-button>SWITCH</button>
-</mat-toolbar>
-
 <div *ngIf="proj$|async as project" class="content">
   <ng-container
     *ngIf="versionsSelected; then viewSummary; else viewVersions">
