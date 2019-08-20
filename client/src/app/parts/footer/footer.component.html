@@ -1,9 +1,16 @@
 <mat-toolbar>
   <span class="h-spacer"></span>
   <span>&copy; 2019, Sanjeev Premi</span>
-<span class="h-spacer"></span>
 
-<button mat-button routerLink="/about" routerLinkActive="active">
-  ABOUT
-</button>
+  <span class="h-spacer"></span>
+
+  <ng-container *ngIf="isAbout; then showBack; else showAbout"></ng-container>
+
+  <ng-template #showBack>
+    <button mat-button (click)="back()">BACK</button>
+  </ng-template>
+
+  <ng-template #showAbout>
+    <button mat-button routerLink="/about">ABOUT</button>
+  </ng-template>
 </mat-toolbar>
