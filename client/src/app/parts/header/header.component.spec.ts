@@ -10,6 +10,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 import { NgxsModule } from '@ngxs/store';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { AppState } from 'src/app/store';
@@ -24,6 +25,7 @@ describe('HeaderComponent', () => {
       imports: [
         NoopAnimationsModule,
         MaterialModule,
+        RouterTestingModule,
         HttpClientTestingModule,
         NgxsModule.forRoot(AppState),
       ],

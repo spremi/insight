@@ -1,11 +1,23 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
   <span>INSIGHT</span>
+
   <span class="h-spacer"></span>
 
-  <button mat-button routerLink="/home" routerLinkActive="active">HOME</button>
+  <ng-container *ngIf="proj$|async as project">
+    <span class="mat-body-2">{{project.name}}</span>
+    <button *ngIf="currentUrl !== '/home'"
+      mat-stroked-button
+      [routerLink]="['/home']">&#8646;</button>
+  </ng-container>
 
-  <button mat-button
-    *ngIf="(isAuth$ | async)"
-    (click)="logout()"
-  >LOGOUT</button>
+  <ng-container *ngIf="isAuth$|async">
+    <button *ngIf="user$|async as user"
+      mat-button
+      class="user-button"
+      [matMenuTriggerFor]="userMenu">{{user.name}}</button>
+
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item (click)="logout()">LOGOUT</button>
+    </mat-menu>
+  </ng-container>
 </mat-toolbar>
