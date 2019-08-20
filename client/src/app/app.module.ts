@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './modules/material/material.module';
+import { BriefVersionsComponent } from './parts/brief-versions/brief-versions.component';
 import { FavProjectsComponent } from './parts/fav-projects/fav-projects.component';
 import { FilterComponentsComponent } from './parts/filter-components/filter-components.component';
 import { FilterPriorityComponent } from './parts/filter-priority/filter-priority.component';
@@ -80,6 +81,7 @@ import { AppState } from './store';
     TileComponent,
     PanelComponent,
     FilterVersionsComponent,
+    BriefVersionsComponent,
   ],
   imports: [
     BrowserModule,
