@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './modules/material/material.module';
+import { BriefComponentsComponent } from './parts/brief-components/brief-components.component';
 import { BriefVersionsComponent } from './parts/brief-versions/brief-versions.component';
 import { FavProjectsComponent } from './parts/fav-projects/fav-projects.component';
 import { FilterComponentsComponent } from './parts/filter-components/filter-components.component';
@@ -82,6 +83,7 @@ import { AppState } from './store';
     PanelComponent,
     FilterVersionsComponent,
     BriefVersionsComponent,
+    BriefComponentsComponent,
   ],
   imports: [
     BrowserModule,
