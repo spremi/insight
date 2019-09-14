@@ -7,7 +7,7 @@
 //
 
 import { CommonModule } from '@angular/common';
-import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,6 +30,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { IconService } from './icon.service';
 
 @NgModule({
   declarations: [],
@@ -90,5 +91,12 @@ export class MaterialModule {
       throw new Error(
         'MaterialModule is already loaded. It must be imported in AppModule only.');
     }
+  }
+
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: MaterialModule,
+      providers: [IconService],
+    };
   }
 }
