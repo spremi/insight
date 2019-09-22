@@ -10,6 +10,7 @@ import { AboutComponent } from './routes/about/about.component';
 import { HomeComponent } from './routes/home/home.component';
 import { IssueComponent } from './routes/issue/issue.component';
 import { LoginComponent } from './routes/login/login.component';
+import { LogoutComponent } from './routes/logout/logout.component';
 import { ProjectComponent } from './routes/project/project.component';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ProjectComponent } from './routes/project/project.component';
     ProjectComponent,
     IssueComponent,
     LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
