@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AboutComponent } from './routes/about/about.component';
 import { HomeComponent } from './routes/home/home.component';
 import { IssueComponent } from './routes/issue/issue.component';
+import { LoginComponent } from './routes/login/login.component';
 import { ProjectComponent } from './routes/project/project.component';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ProjectComponent } from './routes/project/project.component';
     AboutComponent,
     ProjectComponent,
     IssueComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
